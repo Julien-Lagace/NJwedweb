@@ -1,5 +1,9 @@
 ---
 // Landing page with couple names and portrait fly-in
+
+// Update the location link here
+const LOCATION_LINK = 'https://maps.app.goo.gl/yQ4kcDSNXCie1y6M8';
+const LOCATION_NAME = 'Sheraton Suites Calgary Eau Claire';
 ---
 <section id="landing" class="relative min-h-screen flex flex-col items-center justify-center px-4 py-20 bg-cream">
 
@@ -32,11 +36,11 @@
   <!-- Names header -->
   <div class="text-center mb-14 sm:mb-16 fade-up">
     <h1 class="font-display text-5xl sm:text-7xl lg:text-[5.5rem] text-brown-dark font-medium tracking-tight leading-none mb-1">
-      Netra
+      Netra Patel
     </h1>
     <p class="font-display text-2xl sm:text-3xl text-red-wine italic my-2">&</p>
     <h1 class="font-display text-5xl sm:text-7xl lg:text-[5.5rem] text-brown-dark font-medium tracking-tight leading-none">
-      Julien
+      Julien Lagacé
     </h1>
 
     <!-- Ornamental star divider -->
@@ -49,11 +53,35 @@
     </div>
 
     <p class="font-body text-lg sm:text-xl text-brown-medium mt-6 tracking-[0.18em]">
-      June 6th, 2027
+      June 4-6, 2027
     </p>
     <p class="font-body text-sm text-brown-light mt-2 tracking-[0.12em]">
-      The Garden Estate &middot; Tuscany, Italy
+      <a href={LOCATION_LINK} target="_blank" rel="noopener noreferrer" class="hover:text-red-wine transition-colors underline">
+        {LOCATION_NAME}
+      </a>
     </p>
+
+    <!-- Countdown timer -->
+    <div class="mt-10 fade-up">
+      <div class="grid grid-cols-4 gap-4 sm:gap-6">
+        <div class="text-center">
+          <div class="text-3xl sm:text-4xl font-display text-red-wine mb-2" id="countdown-days">0</div>
+          <p class="font-body text-xs sm:text-sm text-brown-light tracking-[0.12em] uppercase">Days</p>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl sm:text-4xl font-display text-red-wine mb-2" id="countdown-hours">0</div>
+          <p class="font-body text-xs sm:text-sm text-brown-light tracking-[0.12em] uppercase">Hours</p>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl sm:text-4xl font-display text-red-wine mb-2" id="countdown-minutes">0</div>
+          <p class="font-body text-xs sm:text-sm text-brown-light tracking-[0.12em] uppercase">Minutes</p>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl sm:text-4xl font-display text-red-wine mb-2" id="countdown-seconds">0</div>
+          <p class="font-body text-xs sm:text-sm text-brown-light tracking-[0.12em] uppercase">Seconds</p>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- Portraits row -->
@@ -89,3 +117,61 @@
     </div>
   </div>
 </section>
+
+<style>
+  .portrait-left {
+    opacity: 0;
+    transform: translateX(-80px) translateY(40px) skewY(-2deg);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .portrait-left.visible {
+    opacity: 1;
+    transform: translateX(0) translateY(0) skewY(0deg);
+  }
+
+  .portrait-right {
+    opacity: 0;
+    transform: translateX(80px) translateY(40px) skewY(2deg);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .portrait-right.visible {
+    opacity: 1;
+    transform: translateX(0) translateY(0) skewY(0deg);
+  }
+</style>
+
+<script>
+  // Countdown timer to June 6th, 2027
+  function updateCountdown() {
+    const weddingDate = new Date('2027-06-06T00:00:00').getTime();
+    const now = new Date().getTime();
+    const distance = weddingDate - now;
+
+    if (distance < 0) {
+      // Wedding has passed
+      document.getElementById('countdown-days')!.textContent = '0';
+      document.getElementById('countdown-hours')!.textContent = '0';
+      document.getElementById('countdown-minutes')!.textContent = '0';
+      document.getElementById('countdown-seconds')!.textContent = '0';
+      return;
+    }
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.getElementById('countdown-days')!.textContent = String(days);
+    document.getElementById('countdown-hours')!.textContent = String(hours.toString().padStart(2, '0'));
+    document.getElementById('countdown-minutes')!.textContent = String(minutes.toString().padStart(2, '0'));
+    document.getElementById('countdown-seconds')!.textContent = String(seconds.toString().padStart(2, '0'));
+  }
+
+  // Update immediately on page load
+  updateCountdown();
+
+  // Update every second
+  setInterval(updateCountdown, 1000);
+</script>

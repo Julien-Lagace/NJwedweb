@@ -1,19 +1,12 @@
 ---
-// Fixed navigation bar + mobile sidebar — hidden until guest code is entered
+// Fixed navigation bar — appears when scrolling past hero
 const links = [
   { href: '#landing', label: 'Home' },
-  { href: '#our-story', label: 'Our Story' },
-  { href: '#schedule', label: 'Schedule' },
-  { href: '#location', label: 'Location' },
-  { href: '#dress-code', label: 'Dress Code' },
-  { href: '#registry', label: 'Registry' },
-  { href: '#accessibility', label: 'Accessibility' },
-  { href: '#contact', label: 'Contact' },
 ];
 ---
 
 <!-- ========== Desktop / Top Nav ========== -->
-<nav id="main-nav" class="nav-slide-down fixed top-0 left-0 right-0 z-40 bg-off-white/90 backdrop-blur-md border-b border-sand">
+<nav id="main-nav" class="fixed top-0 left-0 right-0 z-40 bg-off-white/90 backdrop-blur-md border-b border-sand opacity-0 pointer-events-none transition-opacity duration-500">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between h-14">
     <a href="#landing" class="font-display text-lg text-brown-dark tracking-wide">
       N <span class="text-red-wine">&</span> J

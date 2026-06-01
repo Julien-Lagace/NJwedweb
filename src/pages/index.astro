@@ -35,6 +35,7 @@ import WeddingContent from '../components/WeddingContent.astro';
   // Hero blur-on-scroll
   // =============================================
   const hero = document.getElementById('hero');
+  const mainNav = document.getElementById('main-nav');
   const blurRange = Math.min(window.innerHeight * 0.85, 750);
   let ticking = false;
 
@@ -49,6 +50,15 @@ import WeddingContent from '../components/WeddingContent.astro';
     hero.style.opacity = String(opacity);
     hero.style.transform = `scale(${scale})`;
     hero.style.pointerEvents = blur > 4 ? 'none' : 'auto';
+
+    // Show/hide navigation when scrolling past hero
+    const heroHeight = window.innerHeight;
+    if (window.scrollY > heroHeight * 0.5) {
+      mainNav?.classList.add('!opacity-100', '!pointer-events-auto');
+    } else {
+      mainNav?.classList.remove('!opacity-100', '!pointer-events-auto');
+    }
+
     ticking = false;
   }
 
@@ -67,7 +77,8 @@ import WeddingContent from '../components/WeddingContent.astro';
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
-          portraitObserver.unobserve(entry.target);
+        } else {
+          entry.target.classList.remove('visible');
         }
       });
     },
@@ -103,14 +114,10 @@ import WeddingContent from '../components/WeddingContent.astro';
   const errorEl = document.getElementById('guest-code-error');
   const formWrap = document.getElementById('guest-code-form-wrap');
   const welcomeEl = document.getElementById('guest-welcome');
-  const mainNav = document.getElementById('main-nav');
   const weddingContent = document.getElementById('wedding-content');
 
   function unlockSite() {
-    // 1. Slide in navigation
-    if (mainNav) mainNav.classList.add('active');
-
-    // 2. Swap form for welcome message
+    // Swap form for welcome message
     if (formWrap) formWrap.style.display = 'none';
     if (welcomeEl) {
       welcomeEl.classList.remove('hidden');
@@ -123,7 +130,7 @@ import WeddingContent from '../components/WeddingContent.astro';
       });
     }
 
-    // 3. Reveal wedding content container
+    // 2. Reveal wedding content container
     if (weddingContent) {
       weddingContent.classList.remove('hidden');
       weddingContent.style.opacity = '0';
@@ -132,7 +139,7 @@ import WeddingContent from '../components/WeddingContent.astro';
         weddingContent.style.opacity = '1';
       });
 
-      // 4. Stagger-reveal individual sections as they scroll into view
+      // 3. Stagger-reveal individual sections as they scroll into view
       const sections = weddingContent.querySelectorAll('.content-section');
       const sectionObserver = new IntersectionObserver(
         (entries) => {
@@ -149,7 +156,7 @@ import WeddingContent from '../components/WeddingContent.astro';
       sections.forEach((s) => sectionObserver.observe(s));
     }
 
-    // 5. Smooth scroll to show the newly-revealed content
+    // 4. Smooth scroll to show the newly-revealed content
     setTimeout(() => {
       const codeSection = document.getElementById('guest-code-section');
       if (codeSection) codeSection.scrollIntoView({ behavior: 'smooth', block: 'center' });

@@ -1,11 +1,14 @@
 ---
 // Full-screen hero background that blurs on scroll
+import { Image } from 'astro:assets';
+import coverPageImg from '../assets/images/cover_page.jpg';
+import njLogoImg from '../assets/images/NJ_logo_white.png';
 ---
 <section id="hero" class="hero-bg fixed inset-0 z-30">
   <!-- Background image -->
   <div class="absolute inset-0">
-    <img
-      src="/images/cover_page.jpg"
+    <Image
+      src={coverPageImg}
       alt=""
       class="w-full h-full object-cover"
       loading="eager"
@@ -21,10 +24,10 @@
     <div class="flex-1"></div>
 
     <!-- Centered logo -->
-    <img
-      src="/images/NJ_logo.png"
+    <Image
+      src={njLogoImg}
       alt="NJ Logo"
-      class="max-w-xs sm:max-w-sm md:max-w-md"
+      class="max-w-sm sm:max-w-md md:max-w-lg"
     />
 
     <!-- Spacer to push scroll indicator down -->
