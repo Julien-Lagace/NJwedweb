@@ -1,3 +1,17 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Netra & Julien | June 4,5,6th, 2027',
+  description = "We're getting married! Join us for our wedding celebration on June 6th, 2027.",
+} = Astro.props;
+---
+
 <!doctype html>
 <html lang="en">
 	<head>
