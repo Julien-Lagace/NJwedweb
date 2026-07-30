@@ -1,0 +1,69 @@
+---
+import PageShell from '../PageShell.astro';
+import { getPages, resolveLocale, type Locale } from '../../i18n';
+
+interface Props {
+  locale?: Locale;
+}
+
+const locale = resolveLocale(Astro.props.locale ?? Astro.currentLocale);
+const page = getPages(locale).schedule;
+---
+
+<PageShell title={page.title} locale={locale}>
+  <section class="py-16 sm:py-20 px-4 bg-cream">
+    <div class="max-w-2xl mx-auto text-center">
+      <p class="font-body text-red-wine text-xs tracking-[0.3em] uppercase mb-3">{page.eyebrow}</p>
+      <h1 class="font-display text-3xl sm:text-4xl text-brown-dark mb-6">{page.heading}</h1>
+      <div class="ornament-divider mb-8">
+        <div class="ornament-line"></div>
+        <svg class="w-3.5 h-3.5 text-gold flex-shrink-0" viewBox="0 0 16 16" fill="currentColor">
+          <path d="M8,0 L10,6 L16,8 L10,10 L8,16 L6,10 L0,8 L6,6Z" />
+        </svg>
+        <div class="ornament-line"></div>
+      </div>
+      <p class="font-body text-brown-medium text-lg leading-relaxed">
+        {page.intro}
+      </p>
+    </div>
+  </section>
+
+  {page.days.map((day, i) => (
+    <section
+      id={day.id}
+      class:list={['scroll-mt-20 py-20 px-4', i % 2 === 0 ? 'bg-beige' : 'bg-cream']}
+    >
+      <div class="max-w-2xl mx-auto">
+        <div class="text-center mb-12">
+          <p class="font-body text-red-wine text-xs tracking-[0.3em] uppercase mb-3">{day.date}</p>
+          <h2 class="font-display text-3xl sm:text-4xl text-brown-dark mb-6">{day.label}</h2>
+          <div class="ornament-divider">
+            <div class="ornament-line"></div>
+            <svg class="w-3.5 h-3.5 text-gold flex-shrink-0" viewBox="0 0 16 16" fill="currentColor">
+              <path d="M8,0 L10,6 L16,8 L10,10 L8,16 L6,10 L0,8 L6,6Z" />
+            </svg>
+            <div class="ornament-line"></div>
+          </div>
+        </div>
+
+        <div class="space-y-0">
+          {day.items.map((item, idx) => (
+            <div class="flex gap-6 py-5 border-b border-sand/60 last:border-b-0">
+              <div class="flex-shrink-0 w-28 text-right pt-0.5">
+                <span class="font-body text-sm text-red-wine tracking-wide">{item.time}</span>
+              </div>
+              <div class="flex-shrink-0 flex flex-col items-center">
+                <div class="w-2.5 h-2.5 rounded-full border-2 border-gold bg-off-white mt-1"></div>
+                {idx < day.items.length - 1 && <div class="w-px flex-1 bg-sand/50"></div>}
+              </div>
+              <div class="pb-1">
+                <h3 class="font-display text-lg text-brown-dark mb-1">{item.title}</h3>
+                <p class="font-body text-brown-light text-sm leading-relaxed">{item.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  ))}
+</PageShell>

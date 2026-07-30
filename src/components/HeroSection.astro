@@ -1,8 +1,15 @@
 ---
-// Full-screen hero background that blurs on scroll
 import { Image } from 'astro:assets';
 import coverPageImg from '../assets/images/cover_page.jpg';
 import njLogoImg from '../assets/images/NJ_logo_white.png';
+import { getUi, resolveLocale, type Locale } from '../i18n';
+
+interface Props {
+  locale?: Locale;
+}
+
+const locale = resolveLocale(Astro.props.locale ?? Astro.currentLocale);
+const t = getUi(locale).hero;
 ---
 <section id="hero" class="hero-bg fixed inset-0 z-30">
   <!-- Background image -->
@@ -26,7 +33,7 @@ import njLogoImg from '../assets/images/NJ_logo_white.png';
     <!-- Centered logo -->
     <Image
       src={njLogoImg}
-      alt="NJ Logo"
+      alt={t.logoAlt}
       class="max-w-sm sm:max-w-md md:max-w-lg"
     />
 
@@ -36,7 +43,7 @@ import njLogoImg from '../assets/images/NJ_logo_white.png';
     <!-- Scroll indicator -->
     <div class="scroll-indicator flex flex-col items-center gap-2">
       <span class="text-off-white/50 text-[10px] sm:text-xs tracking-[0.25em] uppercase font-body">
-        Scroll to continue
+        {t.scrollToContinue}
       </span>
       <svg class="w-5 h-5 text-off-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 14l-7 7m0 0l-7-7m7 7V3" />

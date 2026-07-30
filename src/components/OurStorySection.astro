@@ -1,0 +1,32 @@
+---
+import { getUi, resolveLocale, type Locale } from '../i18n';
+
+interface Props {
+  locale?: Locale;
+}
+
+const locale = resolveLocale(Astro.props.locale ?? Astro.currentLocale);
+const t = getUi(locale).story;
+---
+<section id="our-story" class="content-section py-20 px-4 bg-cream">
+  <div class="max-w-2xl mx-auto text-center">
+    <p class="font-body text-red-wine text-xs tracking-[0.3em] uppercase mb-3">{t.eyebrow}</p>
+    <h2 class="font-display text-3xl sm:text-4xl text-brown-dark mb-6">{t.title}</h2>
+    <div class="ornament-divider mb-8">
+      <div class="ornament-line"></div>
+      <svg class="w-3.5 h-3.5 text-gold flex-shrink-0" viewBox="0 0 16 16" fill="currentColor">
+        <path d="M8,0 L10,6 L16,8 L10,10 L8,16 L6,10 L0,8 L6,6Z" />
+      </svg>
+      <div class="ornament-line"></div>
+    </div>
+    <p class="font-body text-brown-medium text-lg leading-relaxed mb-5">
+      {t.p1}
+    </p>
+    <p class="font-body text-brown-medium text-lg leading-relaxed mb-5">
+      {t.p2}
+    </p>
+    <p class="font-body text-brown-medium text-lg leading-relaxed">
+      {t.p3}
+    </p>
+  </div>
+</section>

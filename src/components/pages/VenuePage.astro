@@ -1,0 +1,101 @@
+---
+import PageShell from '../PageShell.astro';
+import { getPages, resolveLocale, type Locale } from '../../i18n';
+
+interface Props {
+  locale?: Locale;
+}
+
+const locale = resolveLocale(Astro.props.locale ?? Astro.currentLocale);
+const page = getPages(locale).venue;
+const DIRECTIONS_LINK = 'https://maps.app.goo.gl/yQ4kcDSNXCie1y6M8';
+---
+
+<PageShell title={page.title} locale={locale}>
+  <section class="py-16 sm:py-20 px-4 bg-cream">
+    <div class="max-w-2xl mx-auto text-center">
+      <p class="font-body text-red-wine text-xs tracking-[0.3em] uppercase mb-3">{page.eyebrow}</p>
+      <h1 class="font-display text-3xl sm:text-4xl text-brown-dark mb-6">{page.heading}</h1>
+      <div class="ornament-divider mb-8">
+        <div class="ornament-line"></div>
+        <svg class="w-3.5 h-3.5 text-gold flex-shrink-0" viewBox="0 0 16 16" fill="currentColor">
+          <path d="M8,0 L10,6 L16,8 L10,10 L8,16 L6,10 L0,8 L6,6Z" />
+        </svg>
+        <div class="ornament-line"></div>
+      </div>
+      <div class="rounded-sm overflow-hidden mb-6 shadow-md">
+        <img
+          src="https://picsum.photos/seed/tuscan-garden-estate-venue/800/400.jpg"
+          alt={page.imageAlt}
+          class="w-full h-48 sm:h-64 object-cover"
+          loading="lazy"
+        />
+      </div>
+      <h2 class="font-display text-2xl text-brown-dark mb-2">{page.venueName}</h2>
+      <p class="font-body text-brown-medium text-lg leading-relaxed mb-1">{page.addressLine1}</p>
+      <p class="font-body text-brown-medium text-lg leading-relaxed mb-6">{page.addressLine2}</p>
+      <a
+        href={DIRECTIONS_LINK}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-block px-7 py-2.5 border border-gold text-brown-dark font-body text-sm tracking-[0.12em] uppercase transition-all duration-300 hover:bg-gold hover:text-off-white"
+      >
+        {page.getDirections}
+      </a>
+    </div>
+  </section>
+
+  <section id="how-to-get-there" class="scroll-mt-20 py-20 px-4 bg-beige">
+    <div class="max-w-2xl mx-auto text-center">
+      <p class="font-body text-red-wine text-xs tracking-[0.3em] uppercase mb-3">{page.travelEyebrow}</p>
+      <h2 class="font-display text-3xl sm:text-4xl text-brown-dark mb-6">{page.travelHeading}</h2>
+      <div class="ornament-divider mb-8">
+        <div class="ornament-line"></div>
+        <svg class="w-3.5 h-3.5 text-gold flex-shrink-0" viewBox="0 0 16 16" fill="currentColor">
+          <path d="M8,0 L10,6 L16,8 L10,10 L8,16 L6,10 L0,8 L6,6Z" />
+        </svg>
+        <div class="ornament-line"></div>
+      </div>
+      <div class="space-y-4 text-left max-w-md mx-auto">
+        <div class="p-5 bg-cream rounded-sm">
+          <p class="font-body text-brown-light text-sm leading-relaxed">
+            <span class="font-medium text-brown-medium">{page.parkingLabel}</span> {page.parkingText}
+          </p>
+        </div>
+        <div class="p-5 bg-cream rounded-sm">
+          <p class="font-body text-brown-light text-sm leading-relaxed">
+            <span class="font-medium text-brown-medium">{page.transitLabel}</span> {page.transitText}
+          </p>
+        </div>
+        <div class="p-5 bg-cream rounded-sm">
+          <p class="font-body text-brown-light text-sm leading-relaxed">
+            <span class="font-medium text-brown-medium">{page.airportLabel}</span> {page.airportText}
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="hotel-booking" class="scroll-mt-20 py-20 px-4 bg-cream">
+    <div class="max-w-2xl mx-auto text-center">
+      <p class="font-body text-red-wine text-xs tracking-[0.3em] uppercase mb-3">{page.stayEyebrow}</p>
+      <h2 class="font-display text-3xl sm:text-4xl text-brown-dark mb-6">{page.stayHeading}</h2>
+      <div class="ornament-divider mb-8">
+        <div class="ornament-line"></div>
+        <svg class="w-3.5 h-3.5 text-gold flex-shrink-0" viewBox="0 0 16 16" fill="currentColor">
+          <path d="M8,0 L10,6 L16,8 L10,10 L8,16 L6,10 L0,8 L6,6Z" />
+        </svg>
+        <div class="ornament-line"></div>
+      </div>
+      <p class="font-body text-brown-medium text-lg leading-relaxed mb-8">
+        {page.stayIntro}
+      </p>
+      <div class="p-5 bg-beige rounded-sm text-left max-w-md mx-auto">
+        <p class="font-display text-lg text-brown-dark mb-2">{page.recommendedArea}</p>
+        <p class="font-body text-brown-light text-sm leading-relaxed">
+          {page.recommendedAreaText}
+        </p>
+      </div>
+    </div>
+  </section>
+</PageShell>

@@ -1,0 +1,48 @@
+---
+import Layout from '../layouts/Layout.astro';
+import NavigationMenu from './NavigationMenu.astro';
+import SiteFooter from './SiteFooter.astro';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import { resolveLocale, type Locale } from '../i18n';
+
+interface Props {
+  title?: string;
+  description?: string;
+  /** When true, redirects to locale home if guest code has not been entered */
+  requireUnlock?: boolean;
+  locale?: Locale;
+}
+
+const locale = resolveLocale(Astro.props.locale ?? Astro.currentLocale);
+const homeUrl = getRelativeLocaleUrl(locale, '/');
+
+const {
+  title,
+  description,
+  requireUnlock = true,
+} = Astro.props;
+---
+
+<Layout title={title} description={description} locale={locale}>
+  {requireUnlock && (
+    <script is:inline define:vars={{ homeUrl }}>
+      try {
+        if (sessionStorage.getItem('weddingUnlocked') !== 'true') {
+          location.replace(homeUrl);
+        } else {
+          document.documentElement.classList.add('wedding-unlocked');
+        }
+      } catch (e) {
+        location.replace(homeUrl);
+      }
+    </script>
+  )}
+
+  <NavigationMenu alwaysVisible={true} locale={locale} />
+
+  <main class="relative z-10 pt-14">
+    <slot />
+  </main>
+
+  <SiteFooter locale={locale} />
+</Layout>

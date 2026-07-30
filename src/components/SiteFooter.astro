@@ -1,0 +1,22 @@
+---
+import { getUi, resolveLocale, type Locale } from '../i18n';
+
+interface Props {
+  locale?: Locale;
+}
+
+const locale = resolveLocale(Astro.props.locale ?? Astro.currentLocale);
+const t = getUi(locale).footer;
+---
+<footer class="py-10 px-4 bg-brown-dark text-center">
+  <p class="font-display text-xl text-off-white/90 tracking-wide mb-2">
+    Netra <span class="text-red-light">&</span> Julien
+  </p>
+  <p class="font-body text-sm text-off-white/50 tracking-[0.12em]">
+    {t.dateLocation}
+  </p>
+  <div class="flex items-center justify-center my-6">
+    <div class="h-px w-24" style="background: linear-gradient(to right, transparent, rgba(255,253,249,0.2), transparent)"></div>
+  </div>
+  <p class="font-body text-xs text-off-white/30 tracking-wider">{t.madeWithLove}</p>
+</footer>

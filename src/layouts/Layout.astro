@@ -1,19 +1,24 @@
 ---
 import '../styles/global.css';
+import { getUi, resolveLocale, type Locale } from '../i18n';
 
 interface Props {
   title?: string;
   description?: string;
+  locale?: Locale;
 }
 
+const locale = resolveLocale(Astro.props.locale ?? Astro.currentLocale);
+const ui = getUi(locale);
+
 const {
-  title = 'Netra & Julien | June 4,5,6th, 2027',
-  description = "We're getting married! Join us for our wedding celebration on June 6th, 2027.",
+  title = ui.meta.defaultTitle,
+  description = ui.meta.defaultDescription,
 } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={locale}>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />

@@ -1,39 +1,177 @@
 ---
-// Fixed navigation bar — appears when scrolling past hero
-const links = [
-  { href: '#landing', label: 'Home' },
-  { href: '#our-story', label: 'Our Story' },
-  { href: '#what-to-expect', label: 'What To Expect' },
-  { href: '#shopping', label: 'Shopping' },
-  { href: '#faqs', label: 'FAQs' },
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import {
+  getLocalizedPath,
+  getUi,
+  resolveLocale,
+  type Locale,
+} from '../i18n';
+
+interface Props {
+  /** When true, nav is always visible (non-home pages). Home uses scroll reveal. */
+  alwaysVisible?: boolean;
+  locale?: Locale;
+}
+
+const { alwaysVisible = false } = Astro.props;
+const locale = resolveLocale(Astro.props.locale ?? Astro.currentLocale);
+const t = getUi(locale).nav;
+const otherLocale: Locale = locale === 'en' ? 'fr' : 'en';
+
+const pathname = Astro.url.pathname;
+const hash = Astro.url.hash;
+const switchHref = getLocalizedPath(otherLocale, pathname, hash);
+
+type NavChild = { href: string; label: string };
+type NavItem = {
+  href: string;
+  label: string;
+  children?: NavChild[];
+};
+
+const homeHref = getRelativeLocaleUrl(locale, '/');
+const whatToExpectHref = getRelativeLocaleUrl(locale, '/what-to-expect');
+const scheduleHref = getRelativeLocaleUrl(locale, '/schedule');
+const venueHref = getRelativeLocaleUrl(locale, '/venue');
+const attireHref = getRelativeLocaleUrl(locale, '/attire');
+const rsvpHref = getRelativeLocaleUrl(locale, '/rsvp');
+
+const navItems: NavItem[] = [
+  { href: homeHref, label: t.home },
+  {
+    href: whatToExpectHref,
+    label: t.whatToExpect,
+    children: [
+      { href: `${whatToExpectHref}#sangeet`, label: t.sangeet },
+      { href: `${whatToExpectHref}#haldi`, label: t.haldi },
+      { href: `${whatToExpectHref}#wedding`, label: t.wedding },
+      { href: `${whatToExpectHref}#reception`, label: t.reception },
+    ],
+  },
+  {
+    href: scheduleHref,
+    label: t.schedule,
+    children: [
+      { href: `${scheduleHref}#friday`, label: t.friday },
+      { href: `${scheduleHref}#saturday`, label: t.saturday },
+      { href: `${scheduleHref}#sunday`, label: t.sunday },
+    ],
+  },
+  {
+    href: venueHref,
+    label: t.venue,
+    children: [
+      { href: `${venueHref}#how-to-get-there`, label: t.howToGetThere },
+      { href: `${venueHref}#hotel-booking`, label: t.hotelBooking },
+    ],
+  },
+  { href: attireHref, label: t.attire },
+  { href: rsvpHref, label: t.rsvp },
 ];
 ---
 
 <!-- ========== Desktop / Top Nav ========== -->
-<nav id="main-nav" class="fixed top-0 left-0 right-0 z-40 bg-off-white/90 backdrop-blur-md border-b border-sand opacity-0 pointer-events-none transition-opacity duration-500">
+<nav
+  id="main-nav"
+  class:list={[
+    'fixed top-0 left-0 right-0 z-40 bg-off-white/90 backdrop-blur-md border-b border-sand transition-opacity duration-500',
+    alwaysVisible ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none',
+  ]}
+  data-always-visible={alwaysVisible ? 'true' : 'false'}
+>
   <div class="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between h-14">
-    <a href="#landing" class="font-display text-lg text-brown-dark tracking-wide">
+    <a href={homeHref} class="font-display text-lg text-brown-dark tracking-wide">
       N <span class="text-red-wine">&</span> J
     </a>
 
     <!-- Desktop links -->
     <div class="hidden md:flex items-center gap-7">
-      {links.map((link) => (
-        <a
-          href={link.href}
-          class="font-body text-sm text-brown-medium tracking-[0.06em] hover:text-red-warm transition-colors duration-200"
-        >
-          {link.label}
-        </a>
+      {navItems.map((item) => (
+        item.children ? (
+          <div class="nav-dropdown relative group" data-requires-unlock>
+            <a
+              href={item.href}
+              class="font-body text-sm text-brown-medium tracking-[0.06em] hover:text-red-warm transition-colors duration-200 inline-flex items-center gap-1"
+            >
+              {item.label}
+              <svg class="w-3 h-3 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </a>
+            <div class="nav-dropdown-panel absolute left-1/2 -translate-x-1/2 top-full pt-2 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto group-focus-within:opacity-100 group-focus-within:pointer-events-auto transition-opacity duration-200">
+              <div class="bg-off-white border border-sand shadow-md py-2 min-w-[11rem]">
+                {item.children.map((child) => (
+                  <a
+                    href={child.href}
+                    class="block px-4 py-2 font-body text-sm text-brown-medium hover:bg-beige hover:text-red-warm transition-colors duration-200 whitespace-nowrap"
+                  >
+                    {child.label}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+        ) : (
+          <a
+            href={item.href}
+            class:list={[
+              'font-body text-sm text-brown-medium tracking-[0.06em] hover:text-red-warm transition-colors duration-200',
+              item.href !== homeHref && 'nav-unlock-item',
+            ]}
+            data-requires-unlock={item.href !== homeHref ? '' : undefined}
+          >
+            {item.label}
+          </a>
+        )
       ))}
+
+      <!-- Language toggle -->
+      <div
+        class="flex items-center gap-1.5 font-body text-sm tracking-[0.08em] ml-1"
+        role="group"
+        aria-label={t.langSwitchLabel}
+      >
+        {locale === 'en' ? (
+          <span class="text-brown-dark font-medium" aria-current="true">{t.langEn}</span>
+        ) : (
+          <a href={switchHref} data-lang-switch class="text-brown-light hover:text-red-warm transition-colors duration-200" hreflang="en" lang="en">{t.langEn}</a>
+        )}
+        <span class="text-sand" aria-hidden="true">/</span>
+        {locale === 'fr' ? (
+          <span class="text-brown-dark font-medium" aria-current="true">{t.langFr}</span>
+        ) : (
+          <a href={switchHref} data-lang-switch class="text-brown-light hover:text-red-warm transition-colors duration-200" hreflang="fr" lang="fr">{t.langFr}</a>
+        )}
+      </div>
     </div>
 
-    <!-- Mobile hamburger -->
-    <button id="mobile-menu-toggle" class="md:hidden p-2 text-brown-dark cursor-pointer" aria-label="Open menu">
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16" />
-      </svg>
-    </button>
+    <div class="flex md:hidden items-center gap-1">
+      <!-- Mobile language toggle -->
+      <div
+        class="flex items-center gap-1 font-body text-xs tracking-[0.08em] px-1"
+        role="group"
+        aria-label={t.langSwitchLabel}
+      >
+        {locale === 'en' ? (
+          <span class="text-brown-dark font-medium" aria-current="true">{t.langEn}</span>
+        ) : (
+          <a href={switchHref} data-lang-switch class="text-brown-light hover:text-red-warm transition-colors duration-200" hreflang="en" lang="en">{t.langEn}</a>
+        )}
+        <span class="text-sand" aria-hidden="true">/</span>
+        {locale === 'fr' ? (
+          <span class="text-brown-dark font-medium" aria-current="true">{t.langFr}</span>
+        ) : (
+          <a href={switchHref} data-lang-switch class="text-brown-light hover:text-red-warm transition-colors duration-200" hreflang="fr" lang="fr">{t.langFr}</a>
+        )}
+      </div>
+
+      <!-- Mobile hamburger -->
+      <button id="mobile-menu-toggle" class="p-2 text-brown-dark cursor-pointer" aria-label={t.openMenu}>
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
   </div>
 </nav>
 
@@ -43,23 +181,145 @@ const links = [
 <!-- ========== Mobile sidebar ========== -->
 <div id="mobile-menu" class="mobile-menu fixed top-0 right-0 bottom-0 w-72 z-50 bg-off-white shadow-xl">
   <div class="flex items-center justify-between p-4 border-b border-sand">
-    <span class="font-display text-lg text-brown-dark">
+    <a href={homeHref} class="font-display text-lg text-brown-dark">
       N <span class="text-red-wine">&</span> J
-    </span>
-    <button id="mobile-menu-close" class="p-2 text-brown-dark cursor-pointer" aria-label="Close menu">
+    </a>
+    <button id="mobile-menu-close" class="p-2 text-brown-dark cursor-pointer" aria-label={t.closeMenu}>
       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" />
       </svg>
     </button>
   </div>
   <div class="flex flex-col py-4">
-    {links.map((link) => (
-      <a
-        href={link.href}
-        class="mobile-nav-link font-body text-base text-brown-medium px-6 py-3.5 hover:bg-beige hover:text-red-warm transition-colors duration-200 tracking-wide"
-      >
-        {link.label}
-      </a>
+    {navItems.map((item) => (
+      item.children ? (
+        <div class="mobile-nav-group" data-requires-unlock>
+          <button
+            type="button"
+            class="mobile-nav-expand w-full flex items-center justify-between font-body text-base text-brown-medium px-6 py-3.5 hover:bg-beige hover:text-red-warm transition-colors duration-200 tracking-wide text-left cursor-pointer"
+            aria-expanded="false"
+          >
+            <span>{item.label}</span>
+            <svg class="mobile-chevron w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div class="mobile-submenu hidden pl-4 border-l border-sand ml-6">
+            <a
+              href={item.href}
+              class="mobile-nav-link block font-body text-sm text-brown-medium px-4 py-2.5 hover:bg-beige hover:text-red-warm transition-colors duration-200"
+            >
+              {t.overview}
+            </a>
+            {item.children.map((child) => (
+              <a
+                href={child.href}
+                class="mobile-nav-link block font-body text-sm text-brown-medium px-4 py-2.5 hover:bg-beige hover:text-red-warm transition-colors duration-200"
+              >
+                {child.label}
+              </a>
+            ))}
+          </div>
+        </div>
+      ) : (
+        <a
+          href={item.href}
+          class:list={[
+            'mobile-nav-link font-body text-base text-brown-medium px-6 py-3.5 hover:bg-beige hover:text-red-warm transition-colors duration-200 tracking-wide',
+            item.href !== homeHref && 'nav-unlock-item',
+          ]}
+          data-requires-unlock={item.href !== homeHref ? '' : undefined}
+        >
+          {item.label}
+        </a>
+      )
     ))}
   </div>
 </div>
+
+<style>
+  /* Hide unlock-required items until guest code unlocks the site */
+  :global(html:not(.wedding-unlocked)) [data-requires-unlock] {
+    display: none !important;
+  }
+</style>
+
+<script>
+  import { isUnlocked } from '../scripts/guest-gate';
+
+  function applyNavUnlockState() {
+    if (isUnlocked()) {
+      document.documentElement.classList.add('wedding-unlocked');
+      document.body.classList.add('wedding-unlocked');
+    } else {
+      document.documentElement.classList.remove('wedding-unlocked');
+      document.body.classList.remove('wedding-unlocked');
+    }
+  }
+
+  // Expose for Home unlock flow
+  (window as any).__applyNavUnlockState = applyNavUnlockState;
+  applyNavUnlockState();
+
+  // Preserve in-page hash when switching language (hashes are not available at SSR)
+  document.querySelectorAll<HTMLAnchorElement>('[data-lang-switch]').forEach((link) => {
+    link.addEventListener('click', (e) => {
+      if (!location.hash) return;
+      e.preventDefault();
+      const base = link.getAttribute('href') ?? '/';
+      location.href = `${base}${location.hash}`;
+    });
+  });
+
+  // Mobile menu open / close
+  const mobileToggle = document.getElementById('mobile-menu-toggle');
+  const mobileClose = document.getElementById('mobile-menu-close');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const mobileBackdrop = document.getElementById('mobile-menu-backdrop');
+
+  function openMobile() {
+    mobileMenu?.classList.add('open');
+    if (mobileBackdrop) {
+      mobileBackdrop.classList.remove('hidden');
+      requestAnimationFrame(() => { mobileBackdrop.style.opacity = '1'; });
+    }
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMobile() {
+    mobileMenu?.classList.remove('open');
+    if (mobileBackdrop) {
+      mobileBackdrop.style.opacity = '0';
+      setTimeout(() => mobileBackdrop.classList.add('hidden'), 300);
+    }
+    document.body.style.overflow = '';
+  }
+
+  mobileToggle?.addEventListener('click', openMobile);
+  mobileClose?.addEventListener('click', closeMobile);
+  mobileBackdrop?.addEventListener('click', closeMobile);
+
+  document.querySelectorAll('.mobile-nav-link').forEach((link) => {
+    link.addEventListener('click', closeMobile);
+  });
+
+  // Mobile expandable dropdown groups
+  document.querySelectorAll('.mobile-nav-expand').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const group = btn.closest('.mobile-nav-group');
+      const submenu = group?.querySelector('.mobile-submenu');
+      const chevron = btn.querySelector('.mobile-chevron');
+      const isOpen = !submenu?.classList.contains('hidden');
+
+      if (isOpen) {
+        submenu?.classList.add('hidden');
+        btn.setAttribute('aria-expanded', 'false');
+        chevron?.classList.remove('rotate-180');
+      } else {
+        submenu?.classList.remove('hidden');
+        btn.setAttribute('aria-expanded', 'true');
+        chevron?.classList.add('rotate-180');
+      }
+    });
+  });
+</script>

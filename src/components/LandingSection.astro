@@ -1,9 +1,14 @@
 ---
-// Landing page with couple names and portrait fly-in
+import { getUi, resolveLocale, type Locale } from '../i18n';
 
-// Update the location link here
+interface Props {
+  locale?: Locale;
+}
+
+const locale = resolveLocale(Astro.props.locale ?? Astro.currentLocale);
+const t = getUi(locale).landing;
+
 const LOCATION_LINK = 'https://maps.app.goo.gl/yQ4kcDSNXCie1y6M8';
-const LOCATION_NAME = 'Sheraton Suites Calgary Eau Claire';
 ---
 <section id="landing" class="relative min-h-screen flex flex-col items-center justify-center px-4 py-20 bg-cream">
 
@@ -53,11 +58,11 @@ const LOCATION_NAME = 'Sheraton Suites Calgary Eau Claire';
     </div>
 
     <p class="font-body text-lg sm:text-xl text-brown-medium mt-6 tracking-[0.18em]">
-      June 4-6, 2027
+      {t.date}
     </p>
     <p class="font-body text-sm text-brown-light mt-2 tracking-[0.12em]">
       <a href={LOCATION_LINK} target="_blank" rel="noopener noreferrer" class="hover:text-red-wine transition-colors underline">
-        {LOCATION_NAME}
+        {t.locationName}
       </a>
     </p>
 
@@ -66,19 +71,19 @@ const LOCATION_NAME = 'Sheraton Suites Calgary Eau Claire';
       <div class="grid grid-cols-4 gap-4 sm:gap-6">
         <div class="text-center">
           <div class="text-3xl sm:text-4xl font-display text-red-wine mb-2" id="countdown-days">0</div>
-          <p class="font-body text-xs sm:text-sm text-brown-light tracking-[0.12em] uppercase">Days</p>
+          <p class="font-body text-xs sm:text-sm text-brown-light tracking-[0.12em] uppercase">{t.days}</p>
         </div>
         <div class="text-center">
           <div class="text-3xl sm:text-4xl font-display text-red-wine mb-2" id="countdown-hours">0</div>
-          <p class="font-body text-xs sm:text-sm text-brown-light tracking-[0.12em] uppercase">Hours</p>
+          <p class="font-body text-xs sm:text-sm text-brown-light tracking-[0.12em] uppercase">{t.hours}</p>
         </div>
         <div class="text-center">
           <div class="text-3xl sm:text-4xl font-display text-red-wine mb-2" id="countdown-minutes">0</div>
-          <p class="font-body text-xs sm:text-sm text-brown-light tracking-[0.12em] uppercase">Minutes</p>
+          <p class="font-body text-xs sm:text-sm text-brown-light tracking-[0.12em] uppercase">{t.minutes}</p>
         </div>
         <div class="text-center">
           <div class="text-3xl sm:text-4xl font-display text-red-wine mb-2" id="countdown-seconds">0</div>
-          <p class="font-body text-xs sm:text-sm text-brown-light tracking-[0.12em] uppercase">Seconds</p>
+          <p class="font-body text-xs sm:text-sm text-brown-light tracking-[0.12em] uppercase">{t.seconds}</p>
         </div>
       </div>
     </div>
@@ -150,7 +155,6 @@ const LOCATION_NAME = 'Sheraton Suites Calgary Eau Claire';
     const distance = weddingDate - now;
 
     if (distance < 0) {
-      // Wedding has passed
       document.getElementById('countdown-days')!.textContent = '0';
       document.getElementById('countdown-hours')!.textContent = '0';
       document.getElementById('countdown-minutes')!.textContent = '0';
@@ -169,9 +173,6 @@ const LOCATION_NAME = 'Sheraton Suites Calgary Eau Claire';
     document.getElementById('countdown-seconds')!.textContent = String(seconds.toString().padStart(2, '0'));
   }
 
-  // Update immediately on page load
   updateCountdown();
-
-  // Update every second
   setInterval(updateCountdown, 1000);
 </script>
