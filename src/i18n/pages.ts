@@ -131,7 +131,7 @@ export const pages = {
             },
             {
               time: '1:30 PM',
-              title: 'Lunch',
+              title: 'Transit to Sheraton & Lunch',
               desc: 'Lunch with family and wedding guests.',
             },
             {
@@ -421,8 +421,8 @@ export const pages = {
             },
             {
               time: '13 h 30',
-              title: 'Déjeuner',
-              desc: 'Déjeuner avec la famille et les invités.',
+              title: 'Transportation vers le Sheraton & Dîner',
+              desc: 'Dîner avec la famille et les invités.',
             },
             {
               time: '18 h 00',
