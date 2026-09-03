@@ -1,6 +1,12 @@
 ---
 import PageShell from '../PageShell.astro';
 import { getPages, resolveLocale, type Locale } from '../../i18n';
+import { Image } from 'astro:assets';
+import dressImage from '../../assets/images/dress.jpg';
+import kurtaImage from '../../assets/images/kurta.jpg';
+import lehengaImage from '../../assets/images/lehenga.jpg';
+import sareeImage from '../../assets/images/saree.jpg';
+import suitImage from '../../assets/images/suit.jpg';
 
 interface Props {
   locale?: Locale;
@@ -8,6 +14,13 @@ interface Props {
 
 const locale = resolveLocale(Astro.props.locale ?? Astro.currentLocale);
 const page = getPages(locale).attire;
+const outfitImages = {
+  dress: dressImage,
+  kurta: kurtaImage,
+  lehenga: lehengaImage,
+  saree: sareeImage,
+  suit: suitImage,
+};
 ---
 
 <PageShell title={page.title} locale={locale}>
@@ -48,6 +61,14 @@ const page = getPages(locale).attire;
         </p>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 text-left max-w-lg mx-auto">
           <div class:list={['p-5 rounded-sm', i % 2 === 0 ? 'bg-cream' : 'bg-beige']}>
+            <div class="rounded-sm overflow-hidden mb-4 shadow-sm">
+              <Image
+                src={outfitImages[event.menImage]}
+                alt={`${event.title} men's outfit example`}
+                class="w-full h-44 object-cover"
+                loading="lazy"
+              />
+            </div>
             <h3 class="font-display text-base text-brown-dark mb-3 text-center">{page.gentlemen}</h3>
             <ul class="font-body text-sm text-brown-medium space-y-2">
               {event.gentlemen.map((line) => (
@@ -59,6 +80,14 @@ const page = getPages(locale).attire;
             </ul>
           </div>
           <div class:list={['p-5 rounded-sm', i % 2 === 0 ? 'bg-cream' : 'bg-beige']}>
+            <div class="rounded-sm overflow-hidden mb-4 shadow-sm">
+              <Image
+                src={outfitImages[event.womenImage]}
+                alt={`${event.title} women's outfit example`}
+                class="w-full h-44 object-cover"
+                loading="lazy"
+              />
+            </div>
             <h3 class="font-display text-base text-brown-dark mb-3 text-center">{page.ladies}</h3>
             <ul class="font-body text-sm text-brown-medium space-y-2">
               {event.ladies.map((line) => (
@@ -73,4 +102,30 @@ const page = getPages(locale).attire;
       </div>
     </section>
   ))}
+
+  <section class="py-20 px-4 bg-cream">
+    <div class="max-w-2xl mx-auto text-center">
+      <p class="font-body text-red-wine text-xs tracking-[0.3em] uppercase mb-3">{page.shoppingEyebrow}</p>
+      <h2 class="font-display text-3xl sm:text-4xl text-brown-dark mb-6">{page.shoppingHeading}</h2>
+      <div class="ornament-divider mb-8">
+        <div class="ornament-line"></div>
+        <svg class="w-3.5 h-3.5 text-gold flex-shrink-0" viewBox="0 0 16 16" fill="currentColor">
+          <path d="M8,0 L10,6 L16,8 L10,10 L8,16 L6,10 L0,8 L6,6Z" />
+        </svg>
+        <div class="ornament-line"></div>
+      </div>
+      <p class="font-body text-brown-medium text-lg leading-relaxed mb-8">{page.shoppingIntro}</p>
+      <div class="flex flex-wrap justify-center gap-3">
+        {page.shoppingLinks.map((link) => (
+          <a
+            href={link.href}
+            aria-disabled="true"
+            class="px-5 py-2 border border-gold text-brown-dark font-body text-sm transition-colors hover:bg-gold hover:text-off-white"
+          >
+            {link.label}
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
 </PageShell>
