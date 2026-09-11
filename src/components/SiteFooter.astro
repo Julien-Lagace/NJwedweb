@@ -8,7 +8,7 @@ interface Props {
 const locale = resolveLocale(Astro.props.locale ?? Astro.currentLocale);
 const t = getUi(locale).footer;
 ---
-<footer class="py-10 px-4 bg-brown-dark text-center">
+<footer class="py-10 px-4 text-center" style="background-color: #520F0F">
   <p class="font-display text-xl text-off-white/90 tracking-wide mb-2">
     Netra <span class="text-red-light">&</span> Julien
   </p>

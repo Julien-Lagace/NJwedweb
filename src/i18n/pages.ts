@@ -143,12 +143,7 @@ export const pages = {
               time: '10:30 PM',
               title: 'Dinner Ends',
               desc: 'Dinner service concludes as the evening continues.',
-            },
-            {
-              time: '1:00 AM',
-              title: 'After Party',
-              desc: 'Celebrate and enjoy the night!',
-            },
+            }
           ],
         },
       ],
@@ -183,18 +178,21 @@ export const pages = {
       parkingText:
         'There is no hotel parking. Plenty of street parking is available nearby, along with several paid parking lots.',
       transitLabel: 'Transit / Shuttle:',
-      transitText:
-        'Both hotels are accessible by CTrain. For Sheraton Suites Calgary Eau Claire, use 4th street or 6th street station, followed by about a 10-minute walk. For Calgary Marriott Downtown Hotel, use 1st street or Centre street station, followed by about a 5-minute walk. Shuttles run only between the Marriott and the Sheraton on the wedding day.',
+      transitIntro: 'Both hotels are accessible by CTrain.',
+      transitItems: [
+        'Sheraton Suites Calgary Eau Claire: use 4th street or 6th street station, followed by about a 10-minute walk.',
+        'Calgary Marriott Downtown Hotel: use 1st street or Centre street station, followed by about a 5-minute walk.',
+        'Shuttles run only between the Marriott and the Sheraton on the wedding day.',
+      ],
       airportLabel: 'Airport:',
       airportText:
         'From Calgary International Airport (YYC), a taxi to your hotel is recommended. Alternatively, the airport bus goes downtown if you prefer public transit.',
       stayEyebrow: 'Stay',
       stayHeading: 'Hotel Booking',
       stayIntro:
-        'We are arranging room blocks for wedding guests. Booking links and preferred rates will appear here once they are confirmed.',
-      recommendedArea: 'Recommended area',
-      recommendedAreaText:
-        'Eau Claire / downtown Calgary — convenient to the main venue and nearby restaurants.',
+        'Our recommended hotel is Sheraton Suites Calgary Eau Claire. Guests can use the group booking link below for a discount and to help keep wedding guests\' rooms close to each other.',
+      bookingLinkText: 'Book with the group rate',
+      bookingLinkUrl: 'https://app.marriott.com/reslink?id=1768858921960&key=GRP&app=resvlink',
     },
     attire: {
       title: 'Attire | Netra & Julien',
@@ -428,11 +426,6 @@ export const pages = {
               time: '22 h 30',
               title: 'Fin du dîner',
               desc: 'Le service du dîner se termine, mais la soirée continue.',
-            },
-            {
-              time: '1 h 00',
-              title: 'After Party',
-              desc: 'Célébrez et profitez de la nuit!',
             }
           ],
         },
@@ -468,18 +461,21 @@ export const pages = {
       parkingText:
         'Il n’y a pas de stationnement à l’hôtel. Il y a beaucoup de stationnement dans la rue ainsi que plusieurs stationnements payants à proximité.',
       transitLabel: 'Transit / Shuttle:',
-      transitText:
-        'Les deux hôtels sont accessibles par le CTrain. Pour le Sheraton Suites Calgary Eau Claire, descendez à la station 4th street ou 6th street, puis marchez environ 10 minutes. Pour le Calgary Marriott Downtown Hotel, descendez à la station 1st street ou Centre street, puis marchez environ 5 minutes. Les navettes circuleront uniquement entre le Marriott et le Sheraton le jour du mariage.',
+      transitIntro: 'Les deux hôtels sont accessibles par le CTrain.',
+      transitItems: [
+        'Sheraton Suites Calgary Eau Claire : descendez à la station 4th street ou 6th street, puis marchez environ 10 minutes.',
+        'Calgary Marriott Downtown Hotel : descendez à la station 1st street ou Centre street, puis marchez environ 5 minutes.',
+        'Les navettes circuleront uniquement entre le Marriott et le Sheraton le jour du mariage.',
+      ],
       airportLabel: 'Airport:',
       airportText:
         'Depuis l’aéroport international de Calgary (YYC), il est recommandé de prendre un taxi jusqu’à votre hôtel. Vous pouvez aussi prendre l’autobus vers le centre-ville si vous préférez les transports en commun.',
       stayEyebrow: 'Hébergement',
       stayHeading: 'Réservation d’hôtel',
       stayIntro:
-        'Nous organisons un bloc de chambres pour les invités du mariage. Les liens de réservation et les tarifs préférentiels seront ajoutés dès qu’ils seront confirmés.',
-      recommendedArea: 'Quartier recommandé',
-      recommendedAreaText:
-        'Eau Claire / centre-ville de Calgary — pratique pour accéder aux principaux lieux de célébration et aux restaurants à proximité.',
+        'Notre hôtel recommandé est le Sheraton Suites Calgary Eau Claire. Les invités peuvent utiliser le lien de réservation de groupe ci-dessous pour profiter d’un rabais et aider à regrouper les chambres des invités du mariage.',
+      bookingLinkText: 'Réserver au tarif de groupe',
+      bookingLinkUrl: 'https://app.marriott.com/reslink?id=1768858921960&key=GRP&app=resvlink',
     },
     attire: {
       title: 'Tenue | Netra & Julien',
