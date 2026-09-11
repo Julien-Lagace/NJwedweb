@@ -125,11 +125,6 @@ export const pages = {
               desc: 'Traditional Gujarati wedding rituals with family and friends.',
             },
             {
-              time: '12:30 PM',
-              title: 'Family Photos',
-              desc: 'Photos with family and friends after the ceremony.',
-            },
-            {
               time: '1:30 PM',
               title: 'Transit to Sheraton & Lunch',
               desc: 'Lunch with family and wedding guests.',
@@ -413,11 +408,6 @@ export const pages = {
               time: '10 h 30',
               title: 'Cérémonie de mariage',
               desc: 'Rituels de mariage gujaratis entourés de famille et d’amis.',
-            },
-            {
-              time: '12 h 30',
-              title: 'Photos de famille',
-              desc: 'Photos avec la famille et les amis après la cérémonie.',
             },
             {
               time: '13 h 30',
