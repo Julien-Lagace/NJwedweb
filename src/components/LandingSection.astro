@@ -1,5 +1,7 @@
 ---
 import { getUi, resolveLocale, type Locale } from '../i18n';
+import brideImage from '../assets/images/bride.jpg';
+import groomImage from '../assets/images/groom.jpg';
 
 interface Props {
   locale?: Locale;
@@ -96,7 +98,7 @@ const LOCATION_LINK = 'https://maps.app.goo.gl/yQ4kcDSNXCie1y6M8';
       <div class="portrait-frame rounded-sm">
         <div class="relative overflow-hidden rounded-sm" style="aspect-ratio: 3/4; width: 280px; max-width: 70vw;">
           <img
-            src="https://picsum.photos/seed/netra-bride-elegant/400/533.jpg"
+            src={brideImage.src}
             alt="Netra"
             class="w-full h-full object-cover"
             loading="lazy"
@@ -111,7 +113,7 @@ const LOCATION_LINK = 'https://maps.app.goo.gl/yQ4kcDSNXCie1y6M8';
       <div class="portrait-frame rounded-sm">
         <div class="relative overflow-hidden rounded-sm" style="aspect-ratio: 3/4; width: 280px; max-width: 70vw;">
           <img
-            src="https://picsum.photos/seed/julien-groom-elegant/400/533.jpg"
+            src={groomImage.src}
             alt="Julien"
             class="w-full h-full object-cover"
             loading="lazy"
