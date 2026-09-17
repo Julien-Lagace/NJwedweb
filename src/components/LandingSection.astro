@@ -1,7 +1,7 @@
 ---
 import { getUi, resolveLocale, type Locale } from '../i18n';
-import brideImage from '../assets/images/bride.jpg';
-import groomImage from '../assets/images/groom.jpg';
+import brideImage from '../assets/images/bride_frame.png';
+import groomImage from '../assets/images/groom_frame.png';
 
 interface Props {
   locale?: Locale;
@@ -92,15 +92,15 @@ const LOCATION_LINK = 'https://maps.app.goo.gl/yQ4kcDSNXCie1y6M8';
   </div>
 
   <!-- Portraits row -->
-  <div class="flex flex-col sm:flex-row items-center gap-10 sm:gap-16 lg:gap-24 w-full max-w-3xl justify-center">
+  <div class="flex flex-col md:flex-row items-center gap-10 md:gap-8 lg:gap-12 w-full max-w-6xl justify-center">
     <!-- Netra's portrait -->
-    <div class="portrait-left" id="portrait-netra">
-      <div class="portrait-frame rounded-sm">
-        <div class="relative overflow-hidden rounded-sm" style="aspect-ratio: 3/4; width: 280px; max-width: 70vw;">
+    <div class="portrait-left md:-mr-20 lg:-mr-32" id="portrait-netra">
+      <div>
+        <div class="relative overflow-hidden" style="aspect-ratio: 1; width: 500px; max-width: 80vw;">
           <img
             src={brideImage.src}
             alt="Netra"
-            class="w-full h-full object-cover"
+            class="w-full h-full object-contain"
             loading="lazy"
           />
         </div>
@@ -110,12 +110,12 @@ const LOCATION_LINK = 'https://maps.app.goo.gl/yQ4kcDSNXCie1y6M8';
 
     <!-- Julien's portrait -->
     <div class="portrait-right" id="portrait-julien">
-      <div class="portrait-frame rounded-sm">
-        <div class="relative overflow-hidden rounded-sm" style="aspect-ratio: 3/4; width: 280px; max-width: 70vw;">
+      <div>
+        <div class="relative overflow-hidden" style="aspect-ratio: 1; width: 500px; max-width: 80vw;">
           <img
             src={groomImage.src}
             alt="Julien"
-            class="w-full h-full object-cover"
+            class="w-full h-full object-contain"
             loading="lazy"
           />
         </div>
@@ -150,9 +150,9 @@ const LOCATION_LINK = 'https://maps.app.goo.gl/yQ4kcDSNXCie1y6M8';
 </style>
 
 <script>
-  // Countdown timer to June 6th, 2027
+  // Countdown timer to June 4th, 2027
   function updateCountdown() {
-    const weddingDate = new Date('2027-06-06T00:00:00').getTime();
+    const weddingDate = new Date('2027-06-04T00:00:00').getTime();
     const now = new Date().getTime();
     const distance = weddingDate - now;
 

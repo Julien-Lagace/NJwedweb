@@ -1,5 +1,7 @@
 ---
+import { Image } from 'astro:assets';
 import { getUi, resolveLocale, type Locale } from '../i18n';
+import njLogoImg from '../assets/images/NJ_logo_white_small.png';
 
 interface Props {
   locale?: Locale;
@@ -8,15 +10,28 @@ interface Props {
 const locale = resolveLocale(Astro.props.locale ?? Astro.currentLocale);
 const t = getUi(locale).footer;
 ---
-<footer class="py-10 px-4 text-center" style="background-color: #520F0F">
-  <p class="font-display text-xl text-off-white/90 tracking-wide mb-2">
-    Netra <span class="text-red-light">&</span> Julien
-  </p>
-  <p class="font-body text-sm text-off-white/50 tracking-[0.12em]">
-    {t.dateLocation}
-  </p>
-  <div class="flex items-center justify-center my-6">
-    <div class="h-px w-24" style="background: linear-gradient(to right, transparent, rgba(255,253,249,0.2), transparent)"></div>
+<footer class="py-8 px-4 bg-red-wine">
+  <div class="relative max-w-6xl min-h-16 mx-auto flex items-center justify-center text-center">
+    <span class="absolute left-0 top-1/2 -translate-y-1/2 block w-20 h-12 overflow-hidden" aria-hidden="true">
+      <Image
+        src={njLogoImg}
+        alt=""
+        class="absolute left-1/2 top-1/2 w-80 max-w-none -translate-x-1/2 -translate-y-1/2"
+      />
+    </span>
+
+    <div>
+      <p class="font-display text-xl text-off-white/90 tracking-wide mb-1">
+        Netra <span class="text-red-light">&</span> Julien
+      </p>
+      <p class="font-body text-sm text-off-white/50 tracking-[0.12em]">
+        {t.dateLocation}
+      </p>
+    </div>
+
+    <div class="absolute right-0 top-1/2 -translate-y-1/2 flex items-center gap-4 text-off-white/60">
+      <div class="h-px w-8 bg-off-white/30"></div>
+      <p class="font-body text-xs tracking-wider">{t.madeWithLove}</p>
+    </div>
   </div>
-  <p class="font-body text-xs text-off-white/30 tracking-wider">{t.madeWithLove}</p>
 </footer>

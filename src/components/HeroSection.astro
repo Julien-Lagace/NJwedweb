@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import coverPageImg from '../assets/images/cover_page.jpg';
-import njLogoImg from '../assets/images/NJ_logo_white.png';
+import njLogoImg from '../assets/images/NJ_logo_white_large.png';
 import { getUi, resolveLocale, type Locale } from '../i18n';
 
 interface Props {
@@ -17,27 +17,19 @@ const t = getUi(locale).hero;
     <Image
       src={coverPageImg}
       alt=""
-      class="w-full h-full object-cover"
+      class="w-full h-full object-cover object-bottom"
       loading="eager"
     />
-    <!-- Gradient overlays for text readability -->
-    <div class="absolute inset-0 bg-gradient-to-b from-black/25 via-transparent to-black/50"></div>
-    <div class="absolute inset-0 bg-gradient-to-r from-black/10 via-transparent to-black/10"></div>
   </div>
 
-  <!-- Centered logo with scroll indicator -->
+  <!-- Corner logo with scroll indicator -->
   <div class="relative z-10 flex flex-col items-center justify-between h-full pb-16 px-4">
-    <!-- Spacer to center logo -->
-    <div class="flex-1"></div>
-
-    <!-- Centered logo -->
     <Image
       src={njLogoImg}
       alt={t.logoAlt}
-      class="max-w-sm sm:max-w-md md:max-w-lg"
+      class="absolute top-[25vh] left-1/2 -translate-x-1/2 max-w-sm sm:max-w-md md:max-w-lg drop-shadow-md"
     />
 
-    <!-- Spacer to push scroll indicator down -->
     <div class="flex-1"></div>
 
     <!-- Scroll indicator -->

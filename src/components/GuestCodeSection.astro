@@ -8,10 +8,10 @@ interface Props {
 const locale = resolveLocale(Astro.props.locale ?? Astro.currentLocale);
 const t = getUi(locale).guestCode;
 ---
-<section id="guest-code-section" class="relative py-20 px-4 bg-beige">
+<section id="guest-code-section" class="relative py-12 px-4 bg-beige">
   <div class="max-w-md mx-auto text-center">
     <!-- Ornament -->
-    <div class="ornament-divider mb-8">
+    <div class="ornament-divider !mt-0 mb-5">
       <div class="ornament-line"></div>
       <svg class="w-3.5 h-3.5 text-gold flex-shrink-0" viewBox="0 0 16 16" fill="currentColor">
         <path d="M8,0 L10,6 L16,8 L10,10 L8,16 L6,10 L0,8 L6,6Z" />
@@ -21,11 +21,11 @@ const t = getUi(locale).guestCode;
 
     <!-- Form state -->
     <div id="guest-code-form-wrap">
-      <p class="font-body text-brown-light text-base mb-8 leading-relaxed">
+      <p class="font-body text-brown-light text-base mb-5 leading-relaxed">
         {t.prompt}
       </p>
 
-      <form id="guest-code-form" class="flex flex-col items-center gap-5">
+      <form id="guest-code-form" class="flex flex-col items-center gap-3">
         <input
           type="text"
           id="guest-code-input"
@@ -39,9 +39,10 @@ const t = getUi(locale).guestCode;
         </div>
         <button
           type="submit"
-          class="group relative px-10 py-3 bg-transparent border border-gold text-brown-dark font-body text-sm tracking-[0.18em] uppercase transition-all duration-300 hover:bg-gold hover:text-off-white cursor-pointer"
+          class="group relative inline-flex items-center justify-center gap-4 px-10 py-2.5 bg-red-wine border border-red-wine text-off-white font-caps text-sm tracking-[0.18em] uppercase transition-all duration-300 hover:bg-red-warm hover:border-red-warm cursor-pointer"
         >
           {t.continue}
+          <span class="text-lg leading-none transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true">&#8594;</span>
         </button>
       </form>
     </div>

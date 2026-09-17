@@ -1,5 +1,7 @@
 ---
 import { getRelativeLocaleUrl } from 'astro:i18n';
+import { Image } from 'astro:assets';
+import njLogoImg from '../assets/images/NJ_logo_white_small.png';
 import {
   getLocalizedPath,
   getUi,
@@ -80,8 +82,10 @@ const navItems: NavItem[] = [
   data-always-visible={alwaysVisible ? 'true' : 'false'}
 >
   <div class="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between h-14">
-    <a href={homeHref} class="font-display text-lg text-brown-dark tracking-wide">
-      N <span class="text-red-wine">&</span> J
+    <a href={homeHref} class="inline-flex items-center" aria-label={t.home}>
+      <span class="relative block w-14 h-9 overflow-hidden">
+        <Image src={njLogoImg} alt="NJ" class="absolute left-1/2 top-1/2 w-56 max-w-none -translate-x-1/2 -translate-y-1/2 brightness-0" />
+      </span>
     </a>
 
     <!-- Desktop links -->
@@ -181,8 +185,10 @@ const navItems: NavItem[] = [
 <!-- ========== Mobile sidebar ========== -->
 <div id="mobile-menu" class="mobile-menu fixed top-0 right-0 bottom-0 w-72 z-50 bg-off-white shadow-xl">
   <div class="flex items-center justify-between p-4 border-b border-sand">
-    <a href={homeHref} class="font-display text-lg text-brown-dark">
-      N <span class="text-red-wine">&</span> J
+    <a href={homeHref} class="inline-flex items-center" aria-label={t.home}>
+      <span class="relative block w-14 h-9 overflow-hidden">
+        <Image src={njLogoImg} alt="NJ" class="absolute left-1/2 top-1/2 w-56 max-w-none -translate-x-1/2 -translate-y-1/2 brightness-0" />
+      </span>
     </a>
     <button id="mobile-menu-close" class="p-2 text-brown-dark cursor-pointer" aria-label={t.closeMenu}>
       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

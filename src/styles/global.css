@@ -7,23 +7,26 @@
    ============================================ */
 @theme {
   /* ---- Colors ---- */
-  --color-cream: #FAF6F0;
-  --color-beige: #F0E6D6;
-  --color-sand: #E5D5C0;
-  --color-red-wine: #9B4D4D;
-  --color-red-warm: #B85C5C;
-  --color-red-light: #D4857A;
-  --color-brown-dark: #3D2B1F;
-  --color-brown-medium: #6B5B4E;
-  --color-brown-light: #8B7B6E;
-  --color-gold: #C4A35A;
-  --color-gold-light: #D4B96A;
-  --color-pink-soft: #E8C4B8;
-  --color-off-white: #FFFDF9;
+  --color-cream: #F6F2EC;
+  --color-beige: #EBE2D6;
+  --color-sand: #C8BAA8;
+  --color-red-wine: #7A1C20;
+  --color-red-warm: #A04545;
+  --color-red-light: #A04545;
+  --color-brown-dark: #3A281F;
+  --color-brown-medium: #593B2E;
+  --color-brown-light: #806D5E;
+  --color-gold: #C8BAA8;
+  --color-gold-light: #D9D0C4;
+  --color-pink-soft: #D9D0C4;
+  --color-off-white: #F6F2EC;
 
   /* ---- Fonts ---- */
-  --font-display: "Playfair Display", serif;
-  --font-body: "Cormorant Garamond", serif;
+  --font-display: "Bodoni Moda", serif;
+  --font-editorial: "Cormorant Garamond", serif;
+  --font-caps: "Cinzel", serif;
+  --font-script: "Great Vibes", cursive;
+  --font-body: "Libre Baskerville", serif;
 }
 
 /* ============================================
@@ -156,46 +159,18 @@
 }
 
 /* ============================================
-   Portrait gold frame
-   ============================================ */
-.portrait-frame {
-  position: relative;
-  padding: 8px;
-  background: linear-gradient(
-    135deg,
-    var(--color-gold) 0%,
-    var(--color-gold-light) 25%,
-    var(--color-gold) 50%,
-    var(--color-gold-light) 75%,
-    var(--color-gold) 100%
-  );
-  box-shadow:
-    0 4px 24px rgba(61, 43, 31, 0.18),
-    inset 0 1px 0 rgba(255, 253, 249, 0.3);
-}
-
-.portrait-frame::before {
-  content: '';
-  position: absolute;
-  inset: 4px;
-  border: 1px solid rgba(255, 253, 249, 0.4);
-  pointer-events: none;
-}
-
-/* ============================================
    Guest code input
    ============================================ */
 .guest-input {
-  background: transparent;
-  border: none;
-  border-bottom: 1px solid var(--color-gold);
+  background: var(--color-cream);
+  border: 1px solid var(--color-gold);
   outline: none;
   font-family: var(--font-body);
   font-size: 1.25rem;
   color: var(--color-brown-dark);
-  padding: 0.5rem 0;
+  padding: 0.75rem 1rem;
   width: 100%;
-  max-width: 300px;
+  max-width: 550px;
   text-align: center;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -209,7 +184,7 @@
 }
 
 .guest-input:focus {
-  border-bottom-color: var(--color-red-wine);
+  border-color: var(--color-red-wine);
 }
 
 /* ============================================
