@@ -204,12 +204,19 @@ export const pages = {
       ladies: 'Ladies',
       shoppingHeading: 'Recommended Shops',
       shoppingEyebrow: 'Where to shop',
-      shoppingIntro: 'Links to recommended websites and shops will be added soon.',
-      shoppingLinks: [
-        { label: 'Sangeet', href: '#' },
-        { label: 'Haldi', href: '#' },
-        { label: 'Wedding', href: '#' },
-        { label: 'Reception', href: '#' },
+      shoppingIntro: 'Explore these recommended places to order or rent outfits for the wedding celebrations.',
+      purchaseHeading: 'Order outfits',
+      rentalHeading: 'Rent outfits',
+      purchaseLinks: [
+        { label: 'Twirlin Style', href: 'https://twirlinstyle.com/' },
+        { label: 'Lashkaraa', href: 'https://www.lashkaraa.com/en-ca?srsltid=AfmBOoqvHSYWK3yjChywiW5dpiOCS5Wlv31jA781AdX3KFcTaSvw_ldW' },
+        { label: 'The Saree Room', href: 'https://www.thesareeroom.com/en-ca?srsltid=AfmBOoon1Js8q9qsQZeYlYFKN93fLpq-LLVSWK1XMq5i4SPk65ia12Mr' },
+        { label: 'House of Indya', href: 'https://www.houseofindya.com/' },
+      ],
+      rentalLinks: [
+        { label: 'Ouar', href: 'https://ouar.net/collections/all' },
+        { label: 'Boomie', href: 'https://boomie.rent/' },
+        { label: 'My Ethnik Rentals', href: 'https://myethnikrentals.com/?srsltid=AfmBOoquCQo71Dcl9l8XG7nsrAZhYNaYUV04eVf70-LTL2dlYmkTS2oN' },
       ],
       events: [
         {
@@ -487,12 +494,19 @@ export const pages = {
       ladies: 'Femmes',
       shoppingHeading: 'Boutiques recommandées',
       shoppingEyebrow: 'Où magasiner',
-      shoppingIntro: 'Les liens vers les sites et boutiques recommandés seront ajoutés bientôt.',
-      shoppingLinks: [
-        { label: 'Sangeet', href: '#' },
-        { label: 'Haldi', href: '#' },
-        { label: 'Mariage', href: '#' },
-        { label: 'Réception', href: '#' },
+      shoppingIntro: 'Découvrez ces boutiques recommandées pour commander ou louer des tenues pour les célébrations du mariage.',
+      purchaseHeading: 'Commander une tenue',
+      rentalHeading: 'Louer une tenue',
+      purchaseLinks: [
+        { label: 'Twirlin Style', href: 'https://twirlinstyle.com/' },
+        { label: 'Lashkaraa', href: 'https://www.lashkaraa.com/en-ca?srsltid=AfmBOoqvHSYWK3yjChywiW5dpiOCS5Wlv31jA781AdX3KFcTaSvw_ldW' },
+        { label: 'The Saree Room', href: 'https://www.thesareeroom.com/en-ca?srsltid=AfmBOoon1Js8q9qsQZeYlYFKN93fLpq-LLVSWK1XMq5i4SPk65ia12Mr' },
+        { label: 'House of Indya', href: 'https://www.houseofindya.com/' },
+      ],
+      rentalLinks: [
+        { label: 'Ouar', href: 'https://ouar.net/collections/all' },
+        { label: 'Boomie', href: 'https://boomie.rent/' },
+        { label: 'My Ethnik Rentals', href: 'https://myethnikrentals.com/?srsltid=AfmBOoquCQo71Dcl9l8XG7nsrAZhYNaYUV04eVf70-LTL2dlYmkTS2oN' },
       ],
       events: [
         {

@@ -115,16 +115,39 @@ const outfitImages = {
         <div class="ornament-line"></div>
       </div>
       <p class="font-body text-brown-medium text-lg leading-relaxed mb-8">{page.shoppingIntro}</p>
-      <div class="flex flex-wrap justify-center gap-3">
-        {page.shoppingLinks.map((link) => (
-          <a
-            href={link.href}
-            aria-disabled="true"
-            class="px-5 py-2 border border-gold text-brown-dark font-body text-sm transition-colors hover:bg-gold hover:text-off-white"
-          >
-            {link.label}
-          </a>
-        ))}
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 text-left max-w-2xl mx-auto">
+        <div>
+          <h3 class="font-display text-xl text-red-wine mb-3">{page.purchaseHeading}</h3>
+          <div class="space-y-2">
+            {page.purchaseLinks.map((link) => (
+              <a
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="group flex items-center justify-between border-b border-sand py-2.5 font-body text-brown-medium transition-colors hover:text-red-wine"
+              >
+                <span>{link.label}</span>
+                <span class="text-red-wine transition-transform group-hover:translate-x-1" aria-hidden="true">&#8594;</span>
+              </a>
+            ))}
+          </div>
+        </div>
+        <div>
+          <h3 class="font-display text-xl text-red-wine mb-3">{page.rentalHeading}</h3>
+          <div class="space-y-2">
+            {page.rentalLinks.map((link) => (
+              <a
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="group flex items-center justify-between border-b border-sand py-2.5 font-body text-brown-medium transition-colors hover:text-red-wine"
+              >
+                <span>{link.label}</span>
+                <span class="text-red-wine transition-transform group-hover:translate-x-1" aria-hidden="true">&#8594;</span>
+              </a>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   </section>
