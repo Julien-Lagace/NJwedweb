@@ -20,6 +20,8 @@ export const ui = {
       howToGetThere: 'How to get there',
       hotelBooking: 'Hotel Booking',
       attire: 'Attire',
+      dressCode: 'Dress Code',
+      whereToShop: 'Where to Shop',
       rsvp: 'RSVP',
       overview: 'Overview',
       openMenu: 'Open menu',
@@ -43,6 +45,10 @@ export const ui = {
       hours: 'Hours',
       minutes: 'Minutes',
       seconds: 'Seconds',
+      sideLeft: 'A beautiful<br />adventure<br />together &lt;3',
+      sideLeftLabel: 'A beautiful adventure together',
+      sideRight: 'Same people<br /><span>A brighter</span><br /><span>future</span>',
+      sideRightLabel: 'Same people, a brighter future',
     },
     guestCode: {
       prompt:
@@ -82,6 +88,8 @@ export const ui = {
       howToGetThere: 'Comment s\'y rendre',
       hotelBooking: 'Réservation d\'hôtel',
       attire: 'Tenue',
+      dressCode: 'Code vestimentaire',
+      whereToShop: 'Où magasiner',
       rsvp: 'RSVP',
       overview: 'Aperçu',
       openMenu: 'Ouvrir le menu',
@@ -105,6 +113,10 @@ export const ui = {
       hours: 'Heures',
       minutes: 'Minutes',
       seconds: 'Secondes',
+      sideLeft: 'Une belle<br />aventure<br />ensemble &lt;3',
+      sideLeftLabel: 'Une belle aventure ensemble',
+      sideRight: 'Les mêmes personnes<br /><span>Un avenir</span><br /><span>plus lumineux</span>',
+      sideRightLabel: 'Les mêmes personnes, un avenir plus lumineux',
     },
     guestCode: {
       prompt:

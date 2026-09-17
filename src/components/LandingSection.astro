@@ -2,6 +2,8 @@
 import { getUi, resolveLocale, type Locale } from '../i18n';
 import brideImage from '../assets/images/bride_frame.png';
 import groomImage from '../assets/images/groom_frame.png';
+import skylineImage from '../assets/images/skyline.jpg';
+import flowersImage from '../assets/images/flowers.jpg';
 
 interface Props {
   locale?: Locale;
@@ -12,7 +14,22 @@ const t = getUi(locale).landing;
 
 const LOCATION_LINK = 'https://maps.app.goo.gl/yQ4kcDSNXCie1y6M8';
 ---
-<section id="landing" class="relative min-h-screen flex flex-col items-center justify-center px-4 py-20 bg-cream">
+<section id="landing" class="relative min-h-screen flex flex-col items-center justify-center px-4 py-10 sm:py-12 bg-cream">
+
+  <!-- Faded Calgary and lily artwork frames the landing content. -->
+  <div class="landing-edge-art landing-edge-art-skyline" aria-hidden="true">
+    <img src={skylineImage.src} alt="" />
+  </div>
+  <div class="landing-edge-art landing-edge-art-flowers" aria-hidden="true">
+    <img src={flowersImage.src} alt="" />
+  </div>
+
+  <aside class="landing-side-copy landing-side-copy-left" aria-label={t.sideLeftLabel}>
+    <p set:html={t.sideLeft}></p>
+  </aside>
+  <aside class="landing-side-copy landing-side-copy-right" aria-label={t.sideRightLabel}>
+    <p set:html={t.sideRight}></p>
+  </aside>
 
   <!-- Decorative floral corners -->
   <svg class="floral-corner top-6 left-6 text-gold" viewBox="0 0 80 80" fill="currentColor">
@@ -41,17 +58,17 @@ const LOCATION_LINK = 'https://maps.app.goo.gl/yQ4kcDSNXCie1y6M8';
   </svg>
 
   <!-- Names header -->
-  <div class="text-center mb-14 sm:mb-16 fade-up">
-    <h1 class="font-display text-5xl sm:text-7xl lg:text-[5.5rem] text-brown-dark font-medium tracking-tight leading-none mb-1">
+  <div class="relative z-10 text-center mb-2 sm:mb-3 fade-up">
+    <h1 class="font-display text-10xl sm:text-10xl lg:text-[5.5rem] text-brown-dark font-medium tracking-tight leading-none mb-1">
       Netra Patel
     </h1>
     <p class="font-display text-2xl sm:text-3xl text-red-wine italic my-2">&</p>
-    <h1 class="font-display text-5xl sm:text-7xl lg:text-[5.5rem] text-brown-dark font-medium tracking-tight leading-none">
+    <h1 class="font-display text-10xl sm:text-10xl lg:text-[5.5rem] text-brown-dark font-medium tracking-tight leading-none">
       Julien Lagacé
     </h1>
 
     <!-- Ornamental star divider -->
-    <div class="ornament-divider mt-8">
+    <div class="ornament-divider !mt-2 !mb-2">
       <div class="ornament-line"></div>
       <svg class="w-3.5 h-3.5 text-gold flex-shrink-0" viewBox="0 0 16 16" fill="currentColor">
         <path d="M8,0 L10,6 L16,8 L10,10 L8,16 L6,10 L0,8 L6,6Z" />
@@ -59,7 +76,7 @@ const LOCATION_LINK = 'https://maps.app.goo.gl/yQ4kcDSNXCie1y6M8';
       <div class="ornament-line"></div>
     </div>
 
-    <p class="font-body text-lg sm:text-xl text-brown-medium mt-6 tracking-[0.18em]">
+    <p class="font-body text-lg sm:text-xl text-brown-medium mt-1 tracking-[0.18em]">
       {t.date}
     </p>
     <p class="font-body text-sm text-brown-light mt-2 tracking-[0.12em]">
@@ -69,22 +86,22 @@ const LOCATION_LINK = 'https://maps.app.goo.gl/yQ4kcDSNXCie1y6M8';
     </p>
 
     <!-- Countdown timer -->
-    <div class="mt-10 fade-up">
+    <div class="mt-3 fade-up">
       <div class="grid grid-cols-4 gap-4 sm:gap-6">
         <div class="text-center">
-          <div class="text-3xl sm:text-4xl font-display text-red-wine mb-2" id="countdown-days">0</div>
+          <div class="text-3xl sm:text-4xl font-display text-red-wine mb-1" id="countdown-days">0</div>
           <p class="font-body text-xs sm:text-sm text-brown-light tracking-[0.12em] uppercase">{t.days}</p>
         </div>
         <div class="text-center">
-          <div class="text-3xl sm:text-4xl font-display text-red-wine mb-2" id="countdown-hours">0</div>
+          <div class="text-3xl sm:text-4xl font-display text-red-wine mb-1" id="countdown-hours">0</div>
           <p class="font-body text-xs sm:text-sm text-brown-light tracking-[0.12em] uppercase">{t.hours}</p>
         </div>
         <div class="text-center">
-          <div class="text-3xl sm:text-4xl font-display text-red-wine mb-2" id="countdown-minutes">0</div>
+          <div class="text-3xl sm:text-4xl font-display text-red-wine mb-1" id="countdown-minutes">0</div>
           <p class="font-body text-xs sm:text-sm text-brown-light tracking-[0.12em] uppercase">{t.minutes}</p>
         </div>
         <div class="text-center">
-          <div class="text-3xl sm:text-4xl font-display text-red-wine mb-2" id="countdown-seconds">0</div>
+          <div class="text-3xl sm:text-4xl font-display text-red-wine mb-1" id="countdown-seconds">0</div>
           <p class="font-body text-xs sm:text-sm text-brown-light tracking-[0.12em] uppercase">{t.seconds}</p>
         </div>
       </div>
@@ -92,7 +109,7 @@ const LOCATION_LINK = 'https://maps.app.goo.gl/yQ4kcDSNXCie1y6M8';
   </div>
 
   <!-- Portraits row -->
-  <div class="flex flex-col md:flex-row items-center gap-10 md:gap-8 lg:gap-12 w-full max-w-6xl justify-center">
+  <div class="relative z-10 flex flex-col md:flex-row items-center gap-3 md:gap-2 lg:gap-4 w-full max-w-6xl justify-center">
     <!-- Netra's portrait -->
     <div class="portrait-left md:-mr-20 lg:-mr-32" id="portrait-netra">
       <div>
@@ -105,7 +122,7 @@ const LOCATION_LINK = 'https://maps.app.goo.gl/yQ4kcDSNXCie1y6M8';
           />
         </div>
       </div>
-      <p class="text-center font-display text-xl text-brown-dark mt-4 tracking-wide">Netra</p>
+      <p class="text-center font-display text-2xl sm:text-4xl text-brown-dark mt-1 tracking-wide">Netra</p>
     </div>
 
     <!-- Julien's portrait -->
@@ -120,7 +137,7 @@ const LOCATION_LINK = 'https://maps.app.goo.gl/yQ4kcDSNXCie1y6M8';
           />
         </div>
       </div>
-      <p class="text-center font-display text-xl text-brown-dark mt-4 tracking-wide">Julien</p>
+      <p class="text-center font-display text-2xl sm:text-4xl text-brown-dark mt-1 tracking-wide">Julien</p>
     </div>
   </div>
 </section>
@@ -146,6 +163,95 @@ const LOCATION_LINK = 'https://maps.app.goo.gl/yQ4kcDSNXCie1y6M8';
   .portrait-right.visible {
     opacity: 1;
     transform: translateX(0) translateY(0) skewY(0deg);
+  }
+
+  .landing-edge-art {
+    position: absolute;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.4;
+    filter: saturate(0.4) sepia(0.18) contrast(1.35);
+  }
+
+  .landing-edge-art img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .landing-edge-art-skyline {
+    left: 0;
+    bottom: 0;
+    width: min(38vw, 500px);
+    height: 32%;
+    mask-image: linear-gradient(to right, black 0%, black 62%, transparent 100%), linear-gradient(to top, black 0%, transparent 100%);
+    mask-composite: intersect;
+  }
+
+  .landing-side-copy {
+    position: absolute;
+    z-index: 5;
+    top: 38%;
+    color: var(--color-red-wine);
+    pointer-events: none;
+    text-align: center;
+  }
+
+  .landing-side-copy-left {
+    left: clamp(1.5rem, 7vw, 7rem);
+    transform: rotate(-8deg);
+    font-family: var(--font-handwritten);
+    font-size: clamp(2rem, 3.4vw, 3.4rem);
+    line-height: 0.95;
+  }
+
+  .landing-side-copy-right {
+    right: clamp(1.5rem, 7vw, 7rem);
+    color: var(--color-brown-medium);
+    font-family: var(--font-editorial);
+    font-size: clamp(0.85rem, 1.25vw, 1.2rem);
+    font-weight: 600;
+    letter-spacing: 0.24em;
+    line-height: 1.6;
+    text-transform: uppercase;
+  }
+
+  .landing-side-copy-right::after {
+    content: '';
+    display: block;
+    width: 2rem;
+    height: 1px;
+    margin: 0.8rem auto 0;
+    background: var(--color-brown-light);
+  }
+
+  .landing-edge-art-flowers {
+    right: 0;
+    bottom: 0;
+    width: min(34vw, 440px);
+    height: 42%;
+    opacity: 0.35;
+    mask-image: linear-gradient(to left, black 0%, black 56%, transparent 100%), linear-gradient(to top, black 0%, transparent 100%);
+    mask-composite: intersect;
+  }
+
+  @media (max-width: 767px) {
+    .landing-side-copy {
+      display: none;
+    }
+
+    .landing-edge-art-skyline {
+      width: 52vw;
+      height: 24%;
+      opacity: 0.28;
+    }
+
+    .landing-edge-art-flowers {
+      width: 46vw;
+      height: 28%;
+      opacity: 0.23;
+    }
   }
 </style>
 

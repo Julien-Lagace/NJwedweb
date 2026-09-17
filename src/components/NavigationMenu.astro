@@ -67,7 +67,14 @@ const navItems: NavItem[] = [
       { href: `${venueHref}#hotel-booking`, label: t.hotelBooking },
     ],
   },
-  { href: attireHref, label: t.attire },
+  {
+    href: attireHref,
+    label: t.attire,
+    children: [
+      { href: attireHref, label: t.dressCode },
+      { href: `${attireHref}#where-to-shop`, label: t.whereToShop },
+    ],
+  },
   { href: rsvpHref, label: t.rsvp },
 ];
 ---
