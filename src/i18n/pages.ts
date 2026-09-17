@@ -5,8 +5,17 @@ export const pages = {
       eyebrow: 'Celebration',
       heading: 'What To Expect',
       intro:
-        'Our wedding weekend weaves together cherished Gujarati traditions and joyful celebration. Whether these rituals are familiar or new to you, here is what each event means—and what you can expect as our guest.',
+        'Our wedding celebrations weave together cherished Gujarati traditions and joyful celebration. Whether these rituals are familiar or new to you, here is what each event means—and what you can expect as our guest.',
       events: [
+        {
+          id: 'mehndi',
+          eyebrow: 'An Evening of Art and Connection',
+          title: 'Mehndi',
+          summary:
+            'Mehndi is an intimate pre-wedding gathering where intricate henna designs are applied to the bride and guests. It is an evening of artistry, conversation, food, and connection before the larger celebrations begin.',
+          guest:
+            'Come ready to relax, chat, enjoy the food stations, and get your mehndi done. Allow time for your henna to dry, and choose clothing that leaves your hands and arms comfortable for the artists.',
+        },
         {
           id: 'sangeet',
           eyebrow: 'Night of Music and Dance',
@@ -50,8 +59,30 @@ export const pages = {
       eyebrow: 'The Weekend',
       heading: 'Wedding Schedule',
       intro:
-        'Three days of celebration, from Friday through Sunday.',
+        'Four days of celebration, from Thursday through Sunday.',
       days: [
+        {
+          id: 'thursday',
+          label: 'Thursday - Mehndi',
+          date: 'June 3, 2027',
+          items: [
+            {
+              time: '6:00 PM',
+              title: 'Guest Arrival',
+              desc: 'Food stations will be prepared as guests arrive and settle in.',
+            },
+            {
+              time: '6:30 PM',
+              title: 'Mehndi and Evening Gathering',
+              desc: 'Chat with family and friends, enjoy the food, and get your mehndi done.',
+            },
+            {
+              time: '10:30 PM',
+              title: 'Evening Ends',
+              desc: 'The intimate evening comes to a close.',
+            },
+          ],
+        },
         {
           id: 'friday',
           label: 'Friday - Sangeet',
@@ -298,6 +329,15 @@ export const pages = {
         'Notre week-end de mariage tisse ensemble de chères traditions gujaraties et une célébration joyeuse. Que ces rituels vous soient familiers ou nouveaux, voici ce que chaque événement signifie—et ce à quoi vous pouvez vous attendre en tant qu\'invité.',
       events: [
         {
+          id: 'mehndi',
+          eyebrow: 'Une soirée d’art et de partage',
+          title: 'Mehndi',
+          summary:
+            'Le Mehndi est une rencontre intime avant le mariage où des motifs de henné délicats sont appliqués à la mariée et aux invités. C’est une soirée d’art, de conversation, de nourriture et de partage avant les grandes célébrations.',
+          guest:
+            'Venez vous détendre, discuter, profiter des stations gourmandes et faire appliquer votre mehndi. Prévoyez le temps nécessaire au séchage du henné et choisissez une tenue qui laisse vos mains et vos bras accessibles aux artistes.',
+        },
+        {
           id: 'sangeet',
           eyebrow: 'Soirée de musique et de danse',
           title: 'Sangeet',
@@ -340,8 +380,30 @@ export const pages = {
       eyebrow: 'Le week-end',
       heading: 'Horaire du mariage',
       intro:
-        'Trois jours de célébration, du vendredi au dimanche.',
+        'Quatre jours de célébration, du jeudi au dimanche.',
       days: [
+        {
+          id: 'thursday',
+          label: 'Jeudi - Mehndi',
+          date: '3 juin 2027',
+          items: [
+            {
+              time: '18 h 00',
+              title: 'Arrivée des invités',
+              desc: 'Des stations gourmandes seront préparées à l’arrivée des invités.',
+            },
+            {
+              time: '18 h 30',
+              title: 'Mehndi et soirée de partage',
+              desc: 'Discutez avec votre famille et vos amis, profitez de la nourriture et faites appliquer votre mehndi.',
+            },
+            {
+              time: '22 h 30',
+              title: 'Fin de la soirée',
+              desc: 'Cette soirée intime se termine.',
+            },
+          ],
+        },
         {
           id: 'friday',
           label: 'Vendredi - Sangeet',

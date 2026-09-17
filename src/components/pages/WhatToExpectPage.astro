@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import PageShell from '../PageShell.astro';
 import { getPages, resolveLocale, type Locale } from '../../i18n';
+import mehndiImg from '../../assets/images/mehndi.jpg';
 import sangeetImg from '../../assets/images/sangeet.jpg';
 import haldiImg from '../../assets/images/haldi.jpg';
 import weddingImg from '../../assets/images/wedding.jpg';
@@ -15,6 +16,7 @@ const locale = resolveLocale(Astro.props.locale ?? Astro.currentLocale);
 const page = getPages(locale).whatToExpect;
 
 const eventImages = {
+  mehndi: mehndiImg,
   sangeet: sangeetImg,
   haldi: haldiImg,
   wedding: weddingImg,

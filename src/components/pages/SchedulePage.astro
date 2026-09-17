@@ -37,7 +37,7 @@ const page = getPages(locale).schedule;
         <div class="text-center mb-12">
           <p class="font-body text-red-wine text-xs tracking-[0.3em] uppercase mb-3">{day.date}</p>
           <h2 class="font-display text-3xl sm:text-4xl text-brown-dark mb-6">{day.label}</h2>
-          <p class="font-body text-brown-medium text-sm leading-relaxed mb-6">{day.location}</p>
+          {day.location && <p class="font-body text-brown-medium text-sm leading-relaxed mb-6">{day.location}</p>}
           <div class="ornament-divider">
             <div class="ornament-line"></div>
             <svg class="w-3.5 h-3.5 text-gold flex-shrink-0" viewBox="0 0 16 16" fill="currentColor">
