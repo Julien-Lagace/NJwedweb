@@ -64,7 +64,7 @@ export const ui = {
     story: {
       eyebrow: 'Our Story',
       title: 'How It All Began',
-      p1: 'Netra and Julien knew of each other since their first year of engineering at the university of Calgary, but didn\'t start talking until they both decided to head to the same engineering party called "Mechtoberfest" in 2021. That night they shared laughs, looks, drinks, and ended the night with the cliche move of Julien handing Netra his sweater and walking together to the c-train station.',
+      p1: 'Netra and Julien knew of each other since their first year of engineering at the University of Calgary, but didn\'t start talking until they both decided to head to the same engineering party called "Mechtoberfest" in 2021. That night they shared laughs, looks, drinks, and ended the night with the cliche move of Julien handing Netra his sweater and walking together to the c-train station.',
       p2: 'From that day forward, they became inseparable. Sharing morning coffees, activities, and a love for discovering hidden corners of the world. After three and a half wonderful years of adventures together, Julien proposed in a tulip field in Amsterdam in 2025, and Netra said yes!',
       p3: "Now, they can't wait to celebrate this next chapter surrounded by the people they love most.",
     },
@@ -73,7 +73,7 @@ export const ui = {
     meta: {
       defaultTitle: 'Netra & Julien | 4, 5, 6 juin 2027',
       defaultDescription:
-        'Nous nous marions! Joignez-vous à nous pour célébrer notre mariage le 6 juin 2027.',
+        'On se marie! Joignez-vous à nous pour célébrer notre mariage le 6 juin 2027.',
     },
     nav: {
       home: 'Accueil',
@@ -91,7 +91,7 @@ export const ui = {
       venue: 'Lieu',
       howToGetThere: 'Comment s\'y rendre',
       hotelBooking: 'Réservation d\'hôtel',
-      attire: 'Tenue',
+      attire: 'Tenue vestimentaire',
       dressCode: 'Code vestimentaire',
       whereToShop: 'Où magasiner',
       rsvp: 'RSVP',
@@ -111,7 +111,7 @@ export const ui = {
       logoAlt: 'Logo NJ',
     },
     landing: {
-      announcement: 'Nous allons nous marier',
+      announcement: 'On se marie',
       date: '4-6 juin 2027',
       days: 'Jours',
       hours: 'Heures',
@@ -124,19 +124,19 @@ export const ui = {
     },
     guestCode: {
       prompt:
-        'Veuillez entrer le code invité figurant sur votre invitation pour accéder aux détails du mariage.',
-      placeholder: 'Entrez le code',
-      error: 'Veuillez vérifier votre invitation pour le bon code.',
+        'Entrez le code indiqué sur votre invitation pour accéder à tous les détails du mariage.',
+      placeholder: 'Entrez le code ici',
+      error: 'Vérifiez votre invitation pour vous assurer d’avoir le bon code.',
       continue: 'Continuer',
       welcome: 'Bienvenue!',
-      welcomeSub: 'Nous sommes ravis de vous accueillir.<br />Explorez tout ci-dessous.',
+      welcomeSub: 'Nous sommes très heureux de vous accueillir.<br />Découvrez tous les détails ci-dessous.',
     },
     story: {
       eyebrow: 'Notre histoire',
       title: 'Comment tout a commencé',
-      p1: "Netra et Julien se connaissaient depuis leur première année de génie à l'Université de Calgary, mais ce n'est qu'en 2021, lors de la soirée étudiante « Mechtoberfest », qu'ils ont vraiment commencé à se parler. Cette nuit-là, entre rires, regards et verres partagés, Julien a fini par poser son pull sur les épaules de Netra alors qu'ils marchaient ensemble vers la station de C-Train.",
-      p2: "À partir de ce jour-là, ils ne se sont plus quittés—partageant leurs cafés du matin, leurs aventures au quotidien et une même passion pour les quatre coins du monde. Après trois ans et demi d'amour, Julien a fait sa demande au milieu d'un champ de tulipes à Amsterdam en 2025, et Netra a dit oui !",
-      p3: "Aujourd'hui, ils ont hâte de célébrer ce nouveau chapitre et de réunir leurs cultures, entourés de toutes les personnes qu'ils aiment."
+      p1: "Netra et Julien se connaissaient depuis leur première année de génie à l'Université de Calgary, mais ce n'est qu'en 2021, lors de la soirée étudiante « Mechtoberfest », qu'ils ont vraiment commencé à se parler. Cette nuit-là, entre rires, regards et verres partagés, Julien a fini par poser son manteau sur les épaules de Netra alors qu'ils marchaient ensemble vers la station de C-Train.",
+      p2: "À partir de ce jour-là, ils ne se sont plus quittés : cafés du matin, activités et découvertes des quatre coins du monde. Après trois ans et demi d'amour, Julien a fait sa demande au milieu d'un champ de tulipes à Amsterdam en 2025, et Netra a dit oui!",
+      p3: "Aujourd'hui, ils ont hâte de célébrer ce nouveau chapitre et de réunir leurs cultures avec toutes les personnes qu'ils aiment."
     },
   },
 } as const;

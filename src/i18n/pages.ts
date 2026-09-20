@@ -326,14 +326,14 @@ export const pages = {
       eyebrow: 'Célébration',
       heading: 'À quoi s\'attendre',
       intro:
-        'Notre week-end de mariage tisse ensemble de chères traditions gujaraties et une célébration joyeuse. Que ces rituels vous soient familiers ou nouveaux, voici ce que chaque événement signifie et ce à quoi vous pouvez vous attendre en tant qu\'invité.',
+        'Notre fin de semaine de mariage réunit de belles traditions gujaraties et une célébration joyeuse. Que ces rituels vous soient familiers ou nouveaux, voici ce que représente chaque événement et à quoi vous attendre en tant qu\'invité.',
       events: [
         {
           id: 'mehndi',
-          eyebrow: 'Une soirée d’art et de partage',
+          eyebrow: 'Une soirée d’art et de rencontres',
           title: 'Mehndi',
           summary:
-            'Le Mehndi est une rencontre intime avant le mariage où des motifs de henné délicats sont appliqués à la mariée et aux invités. C’est une soirée d’art, de conversation, de nourriture et de partage avant les grandes célébrations.',
+            'Le Mehndi est une rencontre intime avant le mariage où des motifs de henné délicats sont appliqués à la mariée et aux invités. C’est une soirée d’art, de discussions, de repas et de rencontres avant les grandes célébrations.',
           guest: '',
         },
         {
@@ -352,31 +352,31 @@ export const pages = {
           summary:
             'Le Haldi est un rituel de bénédiction joyeux au cours duquel une pâte de curcuma (et souvent d\'autres ingrédients auspicieux) est doucement appliquée sur le couple. La couleur dorée est censée purifier, protéger et apporter bonne fortune avant le mariage.',
           guest:
-            'Ce moment est chaleureux, ludique et intime et on pourra vous inviter à appliquer un peu de pâte en signe de bénédiction.',
+            'Ce moment est chaleureux, ludique et intime. On pourrait vous inviter à appliquer un peu de pâte en signe de bénédiction.',
         },
         {
           id: 'wedding',
           eyebrow: 'La cérémonie',
           title: 'Mariage',
           summary:
-            'La cérémonie de mariage gujaratie est une suite sacrée de rituels devant le feu sacré (agni). On y retrouve notamment le varmala (échange de guirlandes), les pheras (tours autour du feu) et les bénédictions qui scellent les vœux et l\'union du couple.',
+            'La cérémonie de mariage gujaratie est une suite sacrée de rituels devant le feu sacré (agni). On y retrouve notamment le varmala (échange de guirlandes), les pheras (tours autour du feu) et les bénédictions qui marquent les vœux et l\'union du couple.',
           guest:
-            'En tant qu\'invité, vous êtes là pour témoigner et célébrer. La cérémonie peut durer plus longtemps qu\'un mariage occidental. Suivez les indications pour vous lever ou vous asseoir, gardez la voix basse pendant les rituels, et savourez la beauté de chaque bénédiction alors que Netra et Julien commencent leur mariage.',
+            'En tant qu\'invité, vous êtes là pour être témoin et célébrer. La cérémonie peut être plus longue qu\'un mariage occidental. Suivez les indications pour vous lever ou vous asseoir, gardez la voix basse pendant les rituels et savourez chaque bénédiction alors que Netra et Julien commencent leur vie de couple.',
         },
         {
           id: 'reception',
           eyebrow: 'La célébration',
           title: 'Réception',
           summary:
-            'La réception est la grande célébration après les rites du mariage. Une soirée pour honorer les jeunes mariés avec un dîner, des toasts, de la musique et de la danse. C\'est la clôture joyeuse et conviviale du week-end.',
+            'La réception est la grande célébration qui suit la cérémonie. Une soirée pour honorer les nouveaux mariés avec un repas, des discours, de la musique et de la danse. C\'est la conclusion joyeuse et rassembleuse de la fin de semaine.',
           guest:
-            'Arrivez prêts à célébrer : savourez un dîner assis, levez votre verre lors des toasts et rejoignez-nous sur la piste. C\'est la soirée festive alors venez avec appétit, restez tard, et aidez-nous à accompagner Netra et Julien dans leur vie de couple avec joie.',
+            'Venez prêts à célébrer : profitez d’un repas servi à table, levez votre verre pendant les discours et joignez-vous à nous sur la piste de danse. C\'est la grande soirée, alors venez avec appétit et restez tard pour célébrer le début de la vie de couple de Netra et Julien.',
         },
       ],
     },
     schedule: {
-      title: 'Horaire | Netra & Julien',
-      eyebrow: 'Le week-end',
+      title: 'Horaire | Netra et Julien',
+      eyebrow: 'La fin de semaine',
       heading: 'Horaire du mariage',
       intro:
         'Quatre jours de célébration, du jeudi au dimanche.',
@@ -390,12 +390,12 @@ export const pages = {
             {
               time: '18 h 00',
               title: 'Arrivée des invités',
-              desc: 'Des stations gourmandes seront préparées à l’arrivée des invités.',
+              desc: 'Des stations de nourriture seront prêtes à l’arrivée des invités.',
             },
             {
               time: '18 h 30',
               title: 'Mehndi et soirée de partage',
-              desc: 'Discutez avec votre famille et vos amis, profitez de la nourriture et faites appliquer votre mehndi.',
+              desc: 'Jasez avec votre famille et vos amis, profitez du repas et faites-vous appliquer votre mehndi.',
             },
             {
               time: '22 h 30',
@@ -413,12 +413,12 @@ export const pages = {
             {
               time: '18 h 00',
               title: 'Arrivée des invités',
-              desc: 'Boissons de bienvenue, stations gourmandes et accueil des invités.',
+              desc: 'Boissons de bienvenue, stations de nourriture et temps pour vous installer.',
             },
             {
               time: '19 h 00',
-              title: 'Programme du Sangeet',
-              desc: 'Une soirée de musique, de danse et de prestations familiales.',
+              title: 'Soirée de Sangeet',
+              desc: 'Une soirée de musique, de danse et de numéros présentés par la famille.',
             },
             {
               time: '22 h 30',
@@ -441,7 +441,7 @@ export const pages = {
             {
               time: '11 h 30',
               title: 'Haldi',
-              desc: 'Une joyeuse bénédiction au curcuma avec famille et amis.',
+              desc: 'Une joyeuse bénédiction au curcuma avec la famille et les amis.',
             },
             {
               time: '12 h 15',
@@ -451,7 +451,7 @@ export const pages = {
             {
               time: '14 h 00',
               title: 'Temps libre',
-              desc: 'Explorez la ville, détendez-vous ou préparez-vous pour les événements de demain.',
+              desc: 'Explorez la ville, détendez-vous ou préparez-vous pour les événements du lendemain.',
             },
           ],
         },
@@ -483,27 +483,27 @@ export const pages = {
             },
             {
               time: '18 h 00',
-              title: 'Cocktail',
-              desc: 'Boissons, bouchées et échanges avant la réception.',
+              title: 'Heure du cocktail',
+              desc: 'Boissons, bouchées et discussions avant la réception.',
             },
             {
               time: '19 h 00',
               title: 'Réception',
-              desc: 'Une soirée de dîner, discours, prestations et danse.',
+              desc: 'Une soirée de repas, de discours, de numéros et de danse.',
             },
             {
               time: '22 h 30',
-              title: 'Fin du dîner',
-              desc: 'Le service du dîner se termine, mais la soirée continue.',
+              title: 'Fin du souper',
+              desc: 'Le service du souper se termine, mais la soirée continue.',
             }
           ],
         },
       ],
     },
     venue: {
-      title: 'Lieu | Netra & Julien',
+      title: 'Lieu | Netra et Julien',
       eyebrow: 'Lieu',
-      heading: 'Where We\'ll Celebrate',
+      heading: 'Lieux de célébration',
       venues: [
         {
           id: 'sheraton',
@@ -522,23 +522,23 @@ export const pages = {
           events: 'Cérémonie de mariage',
         },
       ],
-      venueEventsLabel: 'Célébrations ici :',
-      getDirections: 'Get Directions',
-      travelEyebrow: 'Travel',
-      travelHeading: 'How to Get There',
-      parkingLabel: 'Parking:',
+      venueEventsLabel: 'Célébrations à cet endroit :',
+      getDirections: 'Itinéraire',
+      travelEyebrow: 'Déplacements',
+      travelHeading: 'Comment s’y rendre',
+      parkingLabel: 'Stationnement :',
       parkingText:
         'Il n’y a pas de stationnement à l’hôtel. Il y a beaucoup de stationnement dans la rue ainsi que plusieurs stationnements payants à proximité.',
-      transitLabel: 'Transit / Shuttle:',
+      transitLabel: 'Transit / Navette:',
       transitIntro: 'Les deux hôtels sont accessibles par le CTrain.',
       transitItems: [
-        'Sheraton Suites Calgary Eau Claire : descendez à la station 4th street ou 6th street, puis marchez environ 10 minutes.',
-        'Calgary Marriott Downtown Hotel : descendez à la station 1st street ou Centre street, puis marchez environ 5 minutes.',
+        'Sheraton Suites Calgary Eau Claire : descendez à la station 4th Street ou 6th Street, puis marchez environ 10 minutes.',
+        'Calgary Marriott Downtown Hotel : descendez à la station 1st Street ou Centre Street, puis marchez environ 5 minutes.',
         'Les navettes circuleront uniquement entre le Marriott et le Sheraton le jour du mariage.',
       ],
-      airportLabel: 'Airport:',
+      airportLabel: 'Aéroport :',
       airportText:
-        'Depuis l’aéroport international de Calgary (YYC), il est recommandé de prendre un taxi jusqu’à votre hôtel. Vous pouvez aussi prendre l’autobus vers le centre-ville si vous préférez les transports en commun.',
+        'Depuis l’aéroport international de Calgary (YYC), il est recommandé de prendre un taxi jusqu’à votre hôtel. Vous pouvez aussi prendre l’autobus vers le centre-ville si vous préférez le transport en commun.',
       stayEyebrow: 'Hébergement',
       stayHeading: 'Réservation d’hôtel',
       stayIntro:
@@ -547,17 +547,17 @@ export const pages = {
       bookingLinkUrl: 'https://app.marriott.com/reslink?id=1768858921960&key=GRP&app=resvlink',
     },
     attire: {
-      title: 'Tenue | Netra & Julien',
+      title: 'Tenue | Netra et Julien',
       eyebrow: 'Code vestimentaire',
-      heading: 'Tenue',
+      heading: 'Tenue vestimentaire',
       intro:
         'Pensez aux styles que vous aimeriez porter. Les tenues traditionnelles sont fortement recommandées pour le Sangeet et demandées pour le mariage.',
       gentlemen: 'Hommes',
       ladies: 'Femmes',
-      shoppingHeading: 'Boutiques recommandées',
+      shoppingHeading: 'Boutiques suggérées',
       shoppingEyebrow: 'Où magasiner',
-      shoppingIntro: 'Découvrez ces boutiques recommandées pour commander ou louer des tenues pour les célébrations du mariage.',
-      purchaseHeading: 'Commander une tenue',
+      shoppingIntro: 'Découvrez ces boutiques suggérées pour acheter ou louer des tenues pour les célébrations du mariage.',
+      purchaseHeading: 'Acheter une tenue',
       rentalHeading: 'Louer une tenue',
       purchaseLinks: [
         { label: 'Twirlin Style', href: 'https://twirlinstyle.com/' },
@@ -577,14 +577,14 @@ export const pages = {
           vibe: 'Traditionnel et festif',
           menImage: 'kurta',
           womenImage: 'lehenga',
-          desc: 'Les tenues traditionnelles sont fortement recommandées pour cette soirée de musique et de célébration. Couleurs : à déterminer.',
+          desc: 'Les tenues traditionnelles sont fortement recommandées pour cette soirée de musique et de célébration. Couleurs : à confirmer.',
           gentlemen: [
             'Kurta fortement recommandé',
             'Choisissez des tissus confortables',
           ],
           ladies: [
             'Lehenga fortement recommandé',
-            'Palette de couleurs : à déterminer',
+            'Palette de couleurs : à confirmer',
           ],
         },
         {
@@ -593,14 +593,14 @@ export const pages = {
           vibe: 'Éclatant et ludique',
           menImage: 'kurta',
           womenImage: 'dress',
-          desc: 'Portez ce qui vous convient pour une joyeuse célébration avec du curcuma et beaucoup de rires. Couleurs : à déterminer.',
+          desc: 'Portez ce qui vous convient pour une joyeuse célébration avec du curcuma et beaucoup de rires. Couleurs : à confirmer.',
           gentlemen: [
             'Toute tenue dans laquelle vous êtes à l’aise',
             'Les tissus légers et lavables sont un bon choix',
           ],
           ladies: [
             'Toute tenue dans laquelle vous êtes à l’aise',
-            'Palette de couleurs : à déterminer',
+            'Palette de couleurs : à confirmer',
           ],
         },
         {
@@ -609,15 +609,15 @@ export const pages = {
           vibe: 'Tenue traditionnelle de mariage',
           menImage: 'kurta',
           womenImage: 'saree',
-          desc: 'Les tenues traditionnelles sont demandées pour la cérémonie de mariage. Couleurs : à déterminer.',
+          desc: 'Les tenues traditionnelles sont demandées pour la cérémonie de mariage. Couleurs : à confirmer.',
           gentlemen: [
             'Kurta demandé',
             'Tissus traditionnels élégants',
-            'Palette de couleurs : à déterminer',
+            'Palette de couleurs : à confirmer',
           ],
           ladies: [
             'Saree ou lehenga demandé',
-            'Palette de couleurs : à déterminer',
+            'Palette de couleurs : à confirmer',
           ],
         },
         {
@@ -626,10 +626,10 @@ export const pages = {
           vibe: 'Élégant et festif',
           menImage: 'suit',
           womenImage: 'saree',
-          desc: 'Choisissez une tenue élégante pour une soirée de dîner, de danse et de célébration. Couleurs : à déterminer.',
+          desc: 'Choisissez une tenue élégante pour une soirée de repas, de danse et de célébration. Couleurs : à confirmer.',
           gentlemen: [
             'Tenue de soirée ou costume',
-            'Palette de couleurs : à déterminer',
+            'Palette de couleurs : à confirmer',
           ],
           ladies: [
             'Lehenga, saree ou tenue de soirée',
@@ -640,9 +640,9 @@ export const pages = {
     },
     rsvp: {
       title: 'RSVP | Netra & Julien',
-      eyebrow: 'Reply',
+      eyebrow: 'Réponse',
       heading: 'RSVP',
-      body: 'Coming soon. We will share RSVP details here once they are ready.',
+      body: 'À venir. Nous vous communiquerons les détails pour confirmer votre présence dès qu’ils seront prêts.',
     },
   },
 } as const;
