@@ -5,7 +5,7 @@ export const pages = {
       eyebrow: 'Celebration',
       heading: 'What To Expect',
       intro:
-        'Our wedding celebrations weave together cherished Gujarati traditions and joyful celebration. Whether these rituals are familiar or new to you, here is what each event means—and what you can expect as our guest.',
+        'Our wedding celebrations weave together cherished Gujarati traditions and joyful celebration. Whether these rituals are familiar or new to you, here is what each event means and what you can expect as our guest.',
       events: [
         {
           id: 'mehndi',
@@ -13,17 +13,16 @@ export const pages = {
           title: 'Mehndi',
           summary:
             'Mehndi is an intimate pre-wedding gathering where intricate henna designs are applied to the bride and guests. It is an evening of artistry, conversation, food, and connection before the larger celebrations begin.',
-          guest:
-            'Come ready to relax, chat, enjoy the food stations, and get your mehndi done. Allow time for your henna to dry, and choose clothing that leaves your hands and arms comfortable for the artists.',
+          guest: '',
         },
         {
           id: 'sangeet',
           eyebrow: 'Night of Music and Dance',
           title: 'Sangeet',
           summary:
-            'Sangeet means "sung together"—a festive pre-wedding evening of music, dance, and family coming together. In Gujarati culture it is often joined with Garba and Dandiya Raas, circling dances set to lively rhythms and bright, colorful energy.',
+            'Sangeet means "sung together", a festive pre-wedding evening of music, dance, and family coming together. In Gujarati culture it is often joined with Garba and Dandiya Raas, circling dances set to lively rhythms and bright, colorful energy.',
           guest:
-            'Expect performances, group dances, and plenty of chances to join in—even if you have never danced Garba or Dandiya before. Wear something festive you can move in, follow the circle, and enjoy one of the highest-energy nights of the weekend.',
+            'Expect performances, group dances, and plenty of chances to join in, even if you have never danced Garba or Dandiya before.',
         },
         {
           id: 'haldi',
@@ -32,7 +31,7 @@ export const pages = {
           summary:
             'Haldi is a joyful blessing ritual in which a paste of turmeric (and often other auspicious ingredients) is gently applied to the couple. The golden color is believed to purify, protect, and bring good fortune as they prepare for marriage.',
           guest:
-            'This gathering is warm, playful, and intimate. Come ready for laughter, photos, and a little turmeric—yellow or light-colored clothes are ideal, and you may be invited to apply a small bit of paste as a blessing.',
+            'This gathering is warm, playful, and intimate and you may be invited to apply a small bit of paste as a blessing.',
         },
         {
           id: 'wedding',
@@ -41,16 +40,16 @@ export const pages = {
           summary:
             'The Gujarati wedding ceremony is a sacred sequence of rituals before the holy fire (agni). Moments may include the varmala (exchange of garlands), pheras (circling the fire together), and blessings that mark the couple\'s vows and union.',
           guest:
-            'As a guest, you are there to witness and celebrate. The ceremony can run longer than a Western wedding—follow cues to stand or sit, keep voices soft during rituals, and enjoy the beauty of each blessing as Netra and Julien begin their marriage.',
+            'As a guest, you are there to witness and celebrate. The ceremony can run longer than a Western wedding. Follow cues to stand or sit, keep voices soft during rituals, and enjoy the beauty of each blessing as Netra and Julien begin their marriage.',
         },
         {
           id: 'reception',
           eyebrow: 'The Celebration',
           title: 'Reception',
           summary:
-            'The reception is the grand celebration after the wedding rites—an evening to honor the newlyweds with dinner, toasts, music, and dancing. It is the joyful, communal close to the wedding weekend.',
+            'The reception is the grand celebration after the wedding rites. It is an evening to honor the newlyweds with dinner, toasts, music, and dancing. It is the joyful, communal close to the wedding weekend.',
           guest:
-            'Arrive ready to celebrate: enjoy a seated dinner, raise a glass during toasts, and join us on the dance floor. This is the party night—come hungry, stay late, and help us send Netra and Julien into married life with joy.',
+            'Arrive ready to celebrate: enjoy a seated dinner, raise a glass during toasts, and join us on the dance floor. This is the party night so come hungry, stay late, and help us send Netra and Julien into married life with joy.',
         },
       ],
     },
@@ -65,6 +64,7 @@ export const pages = {
           id: 'thursday',
           label: 'Thursday - Mehndi',
           date: 'June 3, 2027',
+          location: '',
           items: [
             {
               time: '6:00 PM',
@@ -326,7 +326,7 @@ export const pages = {
       eyebrow: 'Célébration',
       heading: 'À quoi s\'attendre',
       intro:
-        'Notre week-end de mariage tisse ensemble de chères traditions gujaraties et une célébration joyeuse. Que ces rituels vous soient familiers ou nouveaux, voici ce que chaque événement signifie—et ce à quoi vous pouvez vous attendre en tant qu\'invité.',
+        'Notre week-end de mariage tisse ensemble de chères traditions gujaraties et une célébration joyeuse. Que ces rituels vous soient familiers ou nouveaux, voici ce que chaque événement signifie et ce à quoi vous pouvez vous attendre en tant qu\'invité.',
       events: [
         {
           id: 'mehndi',
@@ -334,17 +334,16 @@ export const pages = {
           title: 'Mehndi',
           summary:
             'Le Mehndi est une rencontre intime avant le mariage où des motifs de henné délicats sont appliqués à la mariée et aux invités. C’est une soirée d’art, de conversation, de nourriture et de partage avant les grandes célébrations.',
-          guest:
-            'Venez vous détendre, discuter, profiter des stations gourmandes et faire appliquer votre mehndi. Prévoyez le temps nécessaire au séchage du henné et choisissez une tenue qui laisse vos mains et vos bras accessibles aux artistes.',
+          guest: '',
         },
         {
           id: 'sangeet',
           eyebrow: 'Soirée de musique et de danse',
           title: 'Sangeet',
           summary:
-            'Sangeet signifie « chanté ensemble »—une soirée festive avant le mariage, dédiée à la musique, à la danse et au rapprochement des familles. Dans la culture gujaratie, elle se mêle souvent au Garba et au Dandiya Raas, des danses en cercle au rythme vif et à l\'énergie colorée.',
+            'Sangeet signifie « chanté ensemble », une soirée festive avant le mariage, dédiée à la musique, à la danse et au rapprochement des familles. Dans la culture gujaratie, elle se mêle souvent au Garba et au Dandiya Raas, des danses en cercle au rythme vif et à l\'énergie colorée.',
           guest:
-            'Attendez-vous à des performances, des danses de groupe et de nombreuses occasions de participer—même si vous n\'avez jamais dansé le Garba ou le Dandiya. Portez une tenue festive dans laquelle vous pouvez bouger, suivez le cercle et profitez d\'une des soirées les plus animées du week-end.',
+            'Attendez-vous à des performances, des danses de groupe et de nombreuses occasions de participer, même si vous n\'avez jamais dansé le Garba ou le Dandiya.',
         },
         {
           id: 'haldi',
@@ -353,7 +352,7 @@ export const pages = {
           summary:
             'Le Haldi est un rituel de bénédiction joyeux au cours duquel une pâte de curcuma (et souvent d\'autres ingrédients auspicieux) est doucement appliquée sur le couple. La couleur dorée est censée purifier, protéger et apporter bonne fortune avant le mariage.',
           guest:
-            'Ce moment est chaleureux, ludique et intime. Venez prêts pour les rires, les photos et un peu de curcuma—les vêtements jaunes ou clairs sont idéaux, et on pourra vous inviter à appliquer un peu de pâte en signe de bénédiction.',
+            'Ce moment est chaleureux, ludique et intime et on pourra vous inviter à appliquer un peu de pâte en signe de bénédiction.',
         },
         {
           id: 'wedding',
@@ -362,16 +361,16 @@ export const pages = {
           summary:
             'La cérémonie de mariage gujaratie est une suite sacrée de rituels devant le feu sacré (agni). On y retrouve notamment le varmala (échange de guirlandes), les pheras (tours autour du feu) et les bénédictions qui scellent les vœux et l\'union du couple.',
           guest:
-            'En tant qu\'invité, vous êtes là pour témoigner et célébrer. La cérémonie peut durer plus longtemps qu\'un mariage occidental—suivez les indications pour vous lever ou vous asseoir, gardez la voix basse pendant les rituels, et savourez la beauté de chaque bénédiction alors que Netra et Julien commencent leur mariage.',
+            'En tant qu\'invité, vous êtes là pour témoigner et célébrer. La cérémonie peut durer plus longtemps qu\'un mariage occidental. Suivez les indications pour vous lever ou vous asseoir, gardez la voix basse pendant les rituels, et savourez la beauté de chaque bénédiction alors que Netra et Julien commencent leur mariage.',
         },
         {
           id: 'reception',
           eyebrow: 'La célébration',
           title: 'Réception',
           summary:
-            'La réception est la grande célébration après les rites du mariage—une soirée pour honorer les jeunes mariés avec un dîner, des toasts, de la musique et de la danse. C\'est la clôture joyeuse et conviviale du week-end.',
+            'La réception est la grande célébration après les rites du mariage. Une soirée pour honorer les jeunes mariés avec un dîner, des toasts, de la musique et de la danse. C\'est la clôture joyeuse et conviviale du week-end.',
           guest:
-            'Arrivez prêts à célébrer : savourez un dîner assis, levez votre verre lors des toasts et rejoignez-nous sur la piste. C\'est la soirée festive—venez avec appétit, restez tard, et aidez-nous à accompagner Netra et Julien dans leur vie de couple avec joie.',
+            'Arrivez prêts à célébrer : savourez un dîner assis, levez votre verre lors des toasts et rejoignez-nous sur la piste. C\'est la soirée festive alors venez avec appétit, restez tard, et aidez-nous à accompagner Netra et Julien dans leur vie de couple avec joie.',
         },
       ],
     },
@@ -386,6 +385,7 @@ export const pages = {
           id: 'thursday',
           label: 'Jeudi - Mehndi',
           date: '3 juin 2027',
+          location: '',
           items: [
             {
               time: '18 h 00',

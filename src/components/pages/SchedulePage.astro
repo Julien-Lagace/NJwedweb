@@ -28,8 +28,9 @@ const page = getPages(locale).schedule;
     </div>
   </section>
 
-  {page.days.map((day, i) => (
-    <section
+  {page.days.map((day, i) => {
+    return (
+      <section
       id={day.id}
       class:list={['scroll-mt-20 py-20 px-4', i % 2 === 0 ? 'bg-beige' : 'bg-cream']}
     >
@@ -65,6 +66,7 @@ const page = getPages(locale).schedule;
           ))}
         </div>
       </div>
-    </section>
-  ))}
+      </section>
+    );
+  })}
 </PageShell>

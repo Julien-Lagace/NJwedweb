@@ -41,16 +41,16 @@ export const ui = {
       logoAlt: 'NJ Logo',
     },
     landing: {
+      announcement: 'We are getting married',
       date: 'June 4-6, 2027',
-      locationName: 'Sheraton Suites Calgary Eau Claire',
       days: 'Days',
       hours: 'Hours',
       minutes: 'Minutes',
       seconds: 'Seconds',
       sideLeft: 'A beautiful<br />adventure<br />together &lt;3',
       sideLeftLabel: 'A beautiful adventure together',
-      sideRight: 'Same people<br /><span>A brighter</span><br /><span>future</span>',
-      sideRightLabel: 'Same people, a brighter future',
+      sideRight: 'Same people<br /><span>A brighter</span><br /><span>forever</span>',
+      sideRightLabel: 'Same people, a brighter forever',
     },
     guestCode: {
       prompt:
@@ -111,8 +111,8 @@ export const ui = {
       logoAlt: 'Logo NJ',
     },
     landing: {
+      announcement: 'Nous allons nous marier',
       date: '4-6 juin 2027',
-      locationName: 'Sheraton Suites Calgary Eau Claire',
       days: 'Jours',
       hours: 'Heures',
       minutes: 'Minutes',

@@ -80,9 +80,11 @@ const eventImages = {
             <p class="font-body text-brown-medium text-lg leading-relaxed mb-5">
               {event.summary}
             </p>
-            <p class="font-body text-brown-medium text-lg leading-relaxed">
-              {event.guest}
-            </p>
+            {event.guest && (
+              <p class="font-body text-brown-medium text-lg leading-relaxed">
+                {event.guest}
+              </p>
+            )}
           </div>
         </div>
       </section>
