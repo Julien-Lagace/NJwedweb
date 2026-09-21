@@ -7,6 +7,7 @@ import sangeetImg from '../../assets/images/sangeet.jpg';
 import haldiImg from '../../assets/images/haldi.jpg';
 import weddingImg from '../../assets/images/wedding.jpg';
 import receptionImg from '../../assets/images/reception.jpg';
+import movieImg from '../../assets/images/movie.jpg';
 
 interface Props {
   locale?: Locale;
@@ -21,6 +22,7 @@ const eventImages = {
   haldi: haldiImg,
   wedding: weddingImg,
   reception: receptionImg,
+  movies: movieImg,
 } as const;
 ---
 
@@ -84,6 +86,16 @@ const eventImages = {
               <p class="font-body text-brown-medium text-lg leading-relaxed">
                 {event.guest}
               </p>
+            )}
+            {event.list && (
+              <ul class="mt-6 space-y-3 text-left">
+                {event.list.map((item) => (
+                  <li key={item.title} class="font-body text-brown-medium text-lg leading-relaxed flex flex-col sm:flex-row sm:items-center sm:gap-3">
+                    <span class="font-semibold text-brown-dark">{item.title}</span>
+                    <span class="text-brown-medium/80">({item.platforms})</span>
+                  </li>
+                ))}
+              </ul>
             )}
           </div>
         </div>

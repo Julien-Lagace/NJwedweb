@@ -51,6 +51,19 @@ export const pages = {
           guest:
             'Arrive ready to celebrate: enjoy a seated dinner, raise a glass during toasts, and join us on the dance floor. This is the party night so come hungry, stay late, and help us send Netra and Julien into married life with joy.',
         },
+        {
+          id: 'movies',
+          eyebrow: 'A little inspiration',
+          title: 'Movies',
+          summary:
+            'If you would like to get a feel for the joy, family energy, and big emotional storytelling of Indian weddings, these are a few great films to watch.',
+          list: [
+            { title: 'Yeh Jawaani Hai Deewani', platforms: 'Netflix and Prime' },
+            { title: 'Rocky Aur Rani Kii Prem Kahaani', platforms: 'Prime' },
+            { title: 'Kabhi Khushi Kabhie Gham', platforms: 'Netflix and Prime' },
+            { title: 'Kal Ho Naa Ho', platforms: 'Netflix' },
+          ],
+        },
       ],
     },
     schedule: {
@@ -371,6 +384,19 @@ export const pages = {
             'La réception est la grande célébration qui suit la cérémonie. Une soirée pour honorer les nouveaux mariés avec un repas, des discours, de la musique et de la danse. C\'est la conclusion joyeuse et rassembleuse de la fin de semaine.',
           guest:
             'Venez prêts à célébrer : profitez d’un repas servi à table, levez votre verre pendant les discours et joignez-vous à nous sur la piste de danse. C\'est la grande soirée, alors venez avec appétit et restez tard pour célébrer le début de la vie de couple de Netra et Julien.',
+        },
+        {
+          id: 'movies',
+          eyebrow: 'Un petit aperçu',
+          title: 'Films',
+          summary:
+            'Si vous souhaitez vous faire une idée de la joie, de l’énergie familiale et du grand récit émotionnel des mariages indiens, voici quelques films à regarder.',
+          list: [
+            { title: 'Yeh Jawaani Hai Deewani', platforms: 'Netflix et Prime Video' },
+            { title: 'Rocky Aur Rani Kii Prem Kahaani', platforms: 'Prime Video' },
+            { title: 'Kabhi Khushi Kabhie Gham', platforms: 'Netflix et Prime Video' },
+            { title: 'Kal Ho Naa Ho', platforms: 'Netflix' },
+          ],
         },
       ],
     },
