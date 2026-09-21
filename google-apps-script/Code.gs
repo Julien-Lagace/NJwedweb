@@ -2,10 +2,10 @@ const SHEET_ID = 'REPLACE_WITH_YOUR_SHEET_ID';
 const SHEET_TAB_NAME = 'REPLACE_WITH_YOUR_TAB_NAME';
 const WEBSITE_URL = 'REPLACE_WITH_YOUR_WEDDING_WEBSITE_URL';
 const INVITATION_TIERS = {
-  N4: ['sangeet', 'haldi', 'wedding', 'reception'],
-  N3: ['sangeet', 'wedding', 'reception'],
-  N2: ['wedding', 'reception'],
-  N1: ['reception'],
+  '8104': ['sangeet', 'haldi', 'wedding', 'reception'],
+  '7913': ['sangeet', 'wedding', 'reception'],
+  '0492': ['wedding', 'reception'],
+  '5011': ['reception'],
 };
 
 function doPost(e) {

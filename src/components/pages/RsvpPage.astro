@@ -112,7 +112,7 @@ const rsvpEndpoint = import.meta.env.PUBLIC_RSVP_ENDPOINT ?? '';
           <p class="font-body text-brown-medium leading-relaxed mb-8">
             {isFrench ? 'Nous avons hâte de célébrer avec vous. Si votre réponse change, veuillez écrire à netra.julien.wedding@gmail.com.' : 'We cannot wait to celebrate with you. If your RSVP changes, please email netra.julien.wedding@gmail.com.'}
           </p>
-          <a class="inline-block border border-red-wine text-red-wine px-6 py-3 font-caps text-xs tracking-[0.12em] uppercase hover:bg-red-wine hover:text-off-white transition-colors" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Netra%20%26%20Julien%27s%20Wedding%20Celebration&dates=20270603%2F20270607&details=Wedding%20celebrations%20for%20Netra%20and%20Julien%20in%20Calgary." target="_blank" rel="noreferrer">
+          <a class="inline-block border border-red-wine text-red-wine px-6 py-3 font-caps text-xs tracking-[0.12em] uppercase hover:bg-red-wine hover:text-off-white transition-colors" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Netra%20%26%20Julien%27s%20Wedding%20Celebration&dates=20270604%2F20270607&details=Wedding%20celebrations%20for%20Netra%20and%20Julien%20in%20Calgary." target="_blank" rel="noreferrer">
             {isFrench ? 'Ajouter les dates au calendrier' : 'Add the dates to your calendar'}
           </a>
         </div>
@@ -131,10 +131,10 @@ const rsvpEndpoint = import.meta.env.PUBLIC_RSVP_ENDPOINT ?? '';
 
 <script define:vars={{ isFrench, rsvpEndpoint }}>
   const invitationTiers = {
-    N4: ['sangeet', 'haldi', 'wedding', 'reception'],
-    N3: ['sangeet', 'wedding', 'reception'],
-    N2: ['wedding', 'reception'],
-    N1: ['reception'],
+    '8104': ['sangeet', 'haldi', 'wedding', 'reception'],
+    '7913': ['sangeet', 'wedding', 'reception'],
+    '0492': ['wedding', 'reception'],
+    '5011': ['reception'],
   };
   const codeForm = document.querySelector('#code-form');
   const codeInput = document.querySelector('#guest-code');
