@@ -8,11 +8,14 @@ interface Props {
 
 const locale = resolveLocale(Astro.props.locale ?? Astro.currentLocale);
 const page = getPages(locale).rsvp;
+const isFrench = locale === 'fr';
+const rsvpEndpoint = import.meta.env.PUBLIC_RSVP_ENDPOINT ?? '';
 ---
 
 <PageShell title={page.title} locale={locale}>
-  <section class="py-24 sm:py-32 px-4 bg-cream min-h-[50vh] flex items-center">
-    <div class="max-w-2xl mx-auto text-center w-full">
+  <section class="py-20 sm:py-28 px-4 bg-cream">
+    <div class="max-w-3xl mx-auto w-full">
+      <div class="text-center">
       <p class="font-body text-red-wine text-xs tracking-[0.3em] uppercase mb-3">{page.eyebrow}</p>
       <h1 class="font-display text-3xl sm:text-4xl text-brown-dark mb-6">{page.heading}</h1>
       <div class="ornament-divider mb-8">
@@ -23,8 +26,202 @@ const page = getPages(locale).rsvp;
         <div class="ornament-line"></div>
       </div>
       <p class="font-body text-brown-medium text-lg leading-relaxed">
-        {page.body}
+        {isFrench
+          ? 'Confirmez votre présence aux célébrations auxquelles vous êtes invité.'
+          : 'Please let us know which celebrations you will be joining us for.'}
       </p>
+      </div>
+
+      <div class="mt-12 bg-off-white border border-gold-light px-6 py-8 sm:px-10 sm:py-10">
+        <div id="code-step">
+          <p class="font-caps text-xs tracking-[0.18em] uppercase text-red-wine mb-3">
+            {isFrench ? 'Votre invitation' : 'Your invitation'}
+          </p>
+          <h2 class="font-display text-2xl text-brown-dark mb-3">
+            {isFrench ? 'Entrez votre code RSVP' : 'Enter your RSVP code'}
+          </h2>
+          <p class="font-body text-brown-medium text-sm leading-relaxed mb-6">
+            {isFrench
+              ? 'Ce code nous indique les célébrations auxquelles votre groupe est invité.'
+              : 'Your code tells us which celebrations your party is invited to.'}
+          </p>
+          <form id="code-form" class="flex flex-col sm:flex-row gap-3">
+            <label class="sr-only" for="guest-code">{isFrench ? 'Code RSVP' : 'RSVP code'}</label>
+            <input id="guest-code" class="guest-input flex-1" autocomplete="off" placeholder={isFrench ? 'Votre code' : 'Your code'} required />
+            <button class="bg-red-wine text-off-white px-7 py-3 font-caps text-xs tracking-[0.14em] uppercase hover:bg-brown-dark transition-colors" type="submit">
+              {isFrench ? 'Continuer' : 'Continue'}
+            </button>
+          </form>
+          <p id="code-error" class="hidden mt-4 font-body text-sm text-red-wine" role="alert"></p>
+        </div>
+
+        <form id="rsvp-form" class="hidden" novalidate>
+          <div class="mb-8">
+            <p class="font-caps text-xs tracking-[0.18em] uppercase text-red-wine mb-3">
+              {isFrench ? 'Votre réponse' : 'Your reply'}
+            </p>
+            <h2 class="font-display text-2xl text-brown-dark mb-3">
+              {isFrench ? 'Parlez-nous de vous' : 'Tell us about yourself'}
+            </h2>
+            <p class="font-body text-brown-medium text-sm leading-relaxed">
+              {isFrench ? 'Une réponse par personne, s’il vous plaît.' : 'Please submit one response per person.'}
+            </p>
+          </div>
+
+          <div class="grid sm:grid-cols-2 gap-5 mb-8">
+            <label class="font-body text-sm text-brown-medium">
+              {isFrench ? 'Prénom' : 'First name'} <span class="text-red-wine" aria-hidden="true">*</span>
+              <input name="firstName" class="rsvp-field" autocomplete="given-name" required />
+            </label>
+            <label class="font-body text-sm text-brown-medium">
+              {isFrench ? 'Nom de famille' : 'Last name'} <span class="text-red-wine" aria-hidden="true">*</span>
+              <input name="lastName" class="rsvp-field" autocomplete="family-name" required />
+            </label>
+            <label class="font-body text-sm text-brown-medium sm:col-span-2">
+              {isFrench ? 'Adresse courriel pour la confirmation' : 'Email address for confirmation'} <span class="text-red-wine" aria-hidden="true">*</span>
+              <input name="email" type="email" class="rsvp-field" autocomplete="email" required />
+            </label>
+          </div>
+
+          <fieldset class="border-0 p-0 mb-8">
+            <legend class="font-display text-xl text-brown-dark mb-2">{isFrench ? 'Les célébrations' : 'The celebrations'}</legend>
+            <p class="font-body text-sm text-brown-light mb-4">{isFrench ? 'Cochez chaque événement auquel vous assisterez. Laissez-les tous décochés si vous ne pouvez pas venir.' : 'Check each event you plan to attend. Leave them all unchecked if you cannot attend.'}</p>
+            <div id="event-options" class="grid sm:grid-cols-2 gap-3"></div>
+          </fieldset>
+
+          <div class="space-y-5 mb-8">
+            <label class="font-body text-sm text-brown-medium block">
+              {isFrench ? 'Allergies et restrictions alimentaires' : 'Allergies and dietary restrictions'}
+              <textarea name="dietaryRestrictions" class="rsvp-field min-h-24 resize-y" rows="3"></textarea>
+            </label>
+            <label class="font-body text-sm text-brown-medium block">
+              {isFrench ? 'Commentaires généraux' : 'General comments'}
+              <textarea name="comments" class="rsvp-field min-h-24 resize-y" rows="3"></textarea>
+            </label>
+          </div>
+
+          <button id="submit-rsvp" class="w-full bg-red-wine text-off-white px-7 py-4 font-caps text-xs tracking-[0.14em] uppercase hover:bg-brown-dark transition-colors disabled:opacity-60 disabled:cursor-not-allowed" type="submit">
+            {isFrench ? 'Envoyer ma réponse' : 'Submit my RSVP'}
+          </button>
+          <p id="submit-error" class="hidden mt-4 font-body text-sm text-red-wine" role="alert"></p>
+        </form>
+
+        <div id="thank-you" class="hidden text-center">
+          <p class="font-caps text-xs tracking-[0.18em] uppercase text-red-wine mb-3">{isFrench ? 'Merci' : 'Thank you'}</p>
+          <h2 class="font-display text-3xl text-brown-dark mb-4">{isFrench ? 'Votre réponse est envoyée.' : 'Your RSVP is on its way.'}</h2>
+          <p class="font-body text-brown-medium leading-relaxed mb-8">
+            {isFrench ? 'Nous avons hâte de célébrer avec vous. Si votre réponse change, veuillez écrire à netra.julien.wedding@gmail.com.' : 'We cannot wait to celebrate with you. If your RSVP changes, please email netra.julien.wedding@gmail.com.'}
+          </p>
+          <a class="inline-block border border-red-wine text-red-wine px-6 py-3 font-caps text-xs tracking-[0.12em] uppercase hover:bg-red-wine hover:text-off-white transition-colors" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Netra%20%26%20Julien%27s%20Wedding%20Celebration&dates=20270603%2F20270607&details=Wedding%20celebrations%20for%20Netra%20and%20Julien%20in%20Calgary." target="_blank" rel="noreferrer">
+            {isFrench ? 'Ajouter les dates au calendrier' : 'Add the dates to your calendar'}
+          </a>
+        </div>
+      </div>
+
+      <div class="mt-8 text-center font-body text-sm text-brown-light leading-relaxed">
+        <p>
+          {isFrench ? 'Merci de répondre avant le ' : 'Please RSVP by '}
+          <strong class="font-bold underline">{isFrench ? '4 janvier 2027' : 'January 4th, 2027'}</strong>.
+        </p>
+        <p class="mt-2">{isFrench ? 'Si votre réponse change, veuillez écrire à netra.julien.wedding@gmail.com.' : 'If your RSVP changes, please email netra.julien.wedding@gmail.com.'}</p>
+      </div>
     </div>
   </section>
 </PageShell>
+
+<script define:vars={{ isFrench, rsvpEndpoint }}>
+  const invitationTiers = {
+    N4: ['sangeet', 'haldi', 'wedding', 'reception'],
+    N3: ['sangeet', 'wedding', 'reception'],
+    N2: ['wedding', 'reception'],
+    N1: ['reception'],
+  };
+  const codeForm = document.querySelector('#code-form');
+  const codeInput = document.querySelector('#guest-code');
+  const codeError = document.querySelector('#code-error');
+  const rsvpForm = document.querySelector('#rsvp-form');
+  const eventOptions = document.querySelector('#event-options');
+  const submitError = document.querySelector('#submit-error');
+  const thankYou = document.querySelector('#thank-you');
+  const submitButton = document.querySelector('#submit-rsvp');
+  let activeCode = '';
+  let isSubmitting = false;
+
+  function showMessage(element, message) {
+    element.textContent = message;
+    element.classList.remove('hidden');
+  }
+
+  codeForm?.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const code = codeInput.value.trim().toUpperCase();
+    const events = invitationTiers[code];
+
+    if (!events) {
+      showMessage(codeError, isFrench ? 'Ce code ne correspond pas à une invitation valide.' : 'That code does not match an approved invitation.');
+      codeInput.classList.add('shake');
+      window.setTimeout(() => codeInput.classList.remove('shake'), 450);
+      return;
+    }
+
+    activeCode = code;
+    codeError.classList.add('hidden');
+    const eventDates = {
+      sangeet: isFrench ? 'Sangeet (4 juin 2027)' : 'Sangeet (June 4th, 2027)',
+      haldi: isFrench ? 'Haldi (5 juin 2027)' : 'Haldi (June 5th, 2027)',
+      wedding: isFrench ? 'Cérémonie (6 juin 2027)' : 'Ceremony (June 6th, 2027)',
+      reception: isFrench ? 'Réception (6 juin 2027)' : 'Reception (June 6th, 2027)',
+    };
+    eventOptions.innerHTML = events.map((eventId) => `
+      <label class="flex items-center gap-3 border border-gold-light px-4 py-4 font-body text-sm text-brown-medium cursor-pointer hover:border-red-wine transition-colors">
+        <input type="checkbox" name="attendance-${eventId}" value="yes" class="accent-red-wine w-4 h-4" />
+        <span>${eventDates[eventId]}</span>
+      </label>
+    `).join('');
+    document.querySelector('#code-step').classList.add('hidden');
+    rsvpForm.classList.remove('hidden');
+    rsvpForm.querySelector('input[name="firstName"]').focus();
+  });
+
+  rsvpForm?.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    if (isSubmitting) return;
+    if (!rsvpForm.checkValidity()) {
+      rsvpForm.reportValidity();
+      return;
+    }
+
+    isSubmitting = true;
+    submitButton.disabled = true;
+    submitError.classList.add('hidden');
+    const data = new FormData(rsvpForm);
+    const events = invitationTiers[activeCode];
+    const payload = {
+      code: activeCode,
+      language: isFrench ? 'fr' : 'en',
+      firstName: data.get('firstName'),
+      lastName: data.get('lastName'),
+      email: data.get('email'),
+      dietaryRestrictions: data.get('dietaryRestrictions') || '',
+      comments: data.get('comments') || '',
+      attendance: Object.fromEntries(events.map((eventId) => [eventId, data.get(`attendance-${eventId}`) === 'yes'])),
+    };
+
+    if (!rsvpEndpoint) {
+      showMessage(submitError, isFrench ? 'Le formulaire est prêt, mais le lien de la feuille Google doit encore être configuré.' : 'The form is ready, but the Google Sheet link still needs to be configured.');
+      isSubmitting = false;
+      submitButton.disabled = false;
+      return;
+    }
+
+    try {
+      await fetch(rsvpEndpoint, { method: 'POST', mode: 'no-cors', body: JSON.stringify(payload) });
+      rsvpForm.classList.add('hidden');
+      thankYou.classList.remove('hidden');
+    } catch {
+      showMessage(submitError, isFrench ? 'Une erreur est survenue. Veuillez réessayer.' : 'Something went wrong. Please try again.');
+      isSubmitting = false;
+      submitButton.disabled = false;
+    }
+  });
+</script>
