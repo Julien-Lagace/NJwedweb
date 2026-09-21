@@ -2,11 +2,10 @@
 import PageShell from '../PageShell.astro';
 import { getPages, resolveLocale, type Locale } from '../../i18n';
 import { Image } from 'astro:assets';
-import dressImage from '../../assets/images/dress.jpg';
-import kurtaImage from '../../assets/images/kurta.jpg';
-import lehengaImage from '../../assets/images/lehenga.jpg';
-import sareeImage from '../../assets/images/saree.jpg';
-import suitImage from '../../assets/images/suit.jpg';
+import sangeetImage from '../../assets/images/sangeet_fits.png';
+import haldiImage from '../../assets/images/haldi_fits.png';
+import weddingImage from '../../assets/images/wedding_fits.png';
+import receptionImage from '../../assets/images/reception_fits.png';
 
 interface Props {
   locale?: Locale;
@@ -14,89 +13,80 @@ interface Props {
 
 const locale = resolveLocale(Astro.props.locale ?? Astro.currentLocale);
 const page = getPages(locale).attire;
-const outfitImages = {
-  dress: dressImage,
-  kurta: kurtaImage,
-  lehenga: lehengaImage,
-  saree: sareeImage,
-  suit: suitImage,
+const eventImages = {
+  sangeet: sangeetImage,
+  haldi: haldiImage,
+  wedding: weddingImage,
+  reception: receptionImage,
 };
 ---
 
 <PageShell title={page.title} locale={locale}>
-  <section class="py-16 sm:py-20 px-4 bg-cream">
-    <div class="max-w-2xl mx-auto text-center">
-      <p class="font-body text-red-wine text-xs tracking-[0.3em] uppercase mb-3">{page.eyebrow}</p>
-      <h1 class="font-display text-3xl sm:text-4xl text-brown-dark mb-6">{page.heading}</h1>
+  <section class="px-4 py-20 sm:py-28 bg-cream">
+    <div class="max-w-3xl mx-auto text-center">
+      <p class="font-body text-red-wine text-xs tracking-[0.3em] uppercase mb-4">{page.eyebrow}</p>
+      <h1 class="font-display text-4xl sm:text-6xl text-brown-dark mb-6">{page.heading}</h1>
       <div class="ornament-divider mb-8">
         <div class="ornament-line"></div>
-        <svg class="w-3.5 h-3.5 text-gold flex-shrink-0" viewBox="0 0 16 16" fill="currentColor">
+        <svg class="w-3.5 h-3.5 text-gold flex-shrink-0" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
           <path d="M8,0 L10,6 L16,8 L10,10 L8,16 L6,10 L0,8 L6,6Z" />
         </svg>
         <div class="ornament-line"></div>
       </div>
-      <p class="font-body text-brown-medium text-lg leading-relaxed">
-        {page.intro}
-      </p>
+      <p class="font-editorial italic text-brown-medium text-xl sm:text-2xl leading-relaxed max-w-2xl mx-auto">{page.intro}</p>
     </div>
   </section>
 
   {page.events.map((event, i) => (
     <section
       id={event.id}
-      class:list={['scroll-mt-20 py-20 px-4', i % 2 === 0 ? 'bg-beige' : 'bg-cream']}
+      class:list={['scroll-mt-20 py-20 sm:py-28 px-4', i % 2 === 0 ? 'bg-beige' : 'bg-cream']}
     >
-      <div class="max-w-2xl mx-auto text-center">
+      <div class="max-w-5xl mx-auto text-center">
         <p class="font-body text-red-wine text-xs tracking-[0.3em] uppercase mb-3">{event.title}</p>
-        <h2 class="font-display text-3xl sm:text-4xl text-brown-dark mb-4">{event.vibe}</h2>
-        <div class="ornament-divider mb-8">
-          <div class="ornament-line"></div>
-          <svg class="w-3.5 h-3.5 text-gold flex-shrink-0" viewBox="0 0 16 16" fill="currentColor">
-            <path d="M8,0 L10,6 L16,8 L10,10 L8,16 L6,10 L0,8 L6,6Z" />
-          </svg>
-          <div class="ornament-line"></div>
-        </div>
-        <p class="font-body text-brown-medium text-lg leading-relaxed mb-10">
-          {event.desc}
-        </p>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 text-left max-w-lg mx-auto">
-          <div class:list={['p-5 rounded-sm', i % 2 === 0 ? 'bg-cream' : 'bg-beige']}>
-            <div class="rounded-sm overflow-hidden mb-4 shadow-sm">
+        <h2 class="font-display text-4xl sm:text-5xl text-brown-dark mb-10">{event.vibe}</h2>
+        <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,1.05fr)_minmax(280px,0.95fr)] gap-10 lg:gap-16 items-center text-left">
+          <div class="max-w-xl mx-auto w-full">
+            <div class="overflow-hidden shadow-sm">
               <Image
-                src={outfitImages[event.menImage]}
-                alt={`${event.title} men's outfit example`}
-                class="w-full h-44 object-cover"
+                src={eventImages[event.image]}
+                alt={`${event.title} outfit inspiration`}
+                class="w-full h-auto block"
                 loading="lazy"
               />
             </div>
-            <h3 class="font-display text-base text-brown-dark mb-3 text-center">{page.gentlemen}</h3>
-            <ul class="font-body text-sm text-brown-medium space-y-2">
-              {event.gentlemen.map((line) => (
-                <li class="flex items-start gap-2">
-                  <span class="text-gold mt-0.5 text-xs">&#10022;</span>
-                  <span>{line}</span>
-                </li>
-              ))}
-            </ul>
           </div>
-          <div class:list={['p-5 rounded-sm', i % 2 === 0 ? 'bg-cream' : 'bg-beige']}>
-            <div class="rounded-sm overflow-hidden mb-4 shadow-sm">
-              <Image
-                src={outfitImages[event.womenImage]}
-                alt={`${event.title} women's outfit example`}
-                class="w-full h-44 object-cover"
-                loading="lazy"
-              />
+          <div class="text-center lg:text-left">
+            <div class="mb-8">
+              <div class="flex justify-center lg:justify-start gap-4 mb-4" aria-label={`${event.title} color palette`}>
+                {event.palette.map((color) => (
+                  <span class="w-8 h-8 sm:w-10 sm:h-10 rounded-full border border-white/70 shadow-sm" style={`background-color: ${color}`} aria-label={color}></span>
+                ))}
+              </div>
+              <p class="font-body text-sm text-brown-medium leading-relaxed">{event.paletteNote}</p>
             </div>
-            <h3 class="font-display text-base text-brown-dark mb-3 text-center">{page.ladies}</h3>
-            <ul class="font-body text-sm text-brown-medium space-y-2">
-              {event.ladies.map((line) => (
-                <li class="flex items-start gap-2">
-                  <span class="text-gold mt-0.5 text-xs">&#10022;</span>
-                  <span>{line}</span>
-                </li>
-              ))}
-            </ul>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-6 mb-8">
+              <div>
+                <h3 class="font-display text-lg text-red-wine mb-3">{page.ladies}</h3>
+                <ul class="font-body text-sm text-brown-medium space-y-2">
+                  {event.ladies.map((line) => <li>{line}</li>)}
+                </ul>
+              </div>
+              <div>
+                <h3 class="font-display text-lg text-red-wine mb-3">{page.gentlemen}</h3>
+                <ul class="font-body text-sm text-brown-medium space-y-2">
+                  {event.gentlemen.map((line) => <li>{line}</li>)}
+                </ul>
+              </div>
+            </div>
+            <div class="flex flex-col sm:flex-row lg:flex-col gap-3">
+              <a href={event.inspirationUrl} target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-3 border border-red-wine px-5 py-3 font-body text-xs tracking-[0.12em] uppercase text-red-wine hover:bg-red-wine hover:text-cream transition-colors">
+                <span>{page.viewInspirationButton}</span><span aria-hidden="true">&#8599;</span>
+              </a>
+              <a href={event.curatedShopUrl} target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-3 bg-red-wine px-5 py-3 font-body text-xs tracking-[0.12em] uppercase text-cream hover:bg-brown-dark transition-colors">
+                <span>{page.eventShopButton}</span><span aria-hidden="true">&#8599;</span>
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -113,6 +103,15 @@ const outfitImages = {
           <path d="M8,0 L10,6 L16,8 L10,10 L8,16 L6,10 L0,8 L6,6Z" />
         </svg>
         <div class="ornament-line"></div>
+      </div>
+      <div class="bg-cream px-6 py-8 mb-10">
+        <p class="font-display text-xl text-brown-dark mb-3">{page.curatedShopLabel}</p>
+        <p class="font-body text-red-wine text-sm tracking-[0.12em] uppercase mb-6">
+          {page.discountText.split('NETRA15')[0]}<strong class="font-bold underline">NETRA15</strong>{page.discountText.split('NETRA15')[1]}
+        </p>
+        <a href={page.curatedShopUrl} target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-3 bg-red-wine px-6 py-3 font-body text-xs tracking-[0.12em] uppercase text-cream hover:bg-brown-dark transition-colors">
+          <span>{page.curatedShopButton}</span><span aria-hidden="true">&#8599;</span>
+        </a>
       </div>
       <p class="font-body text-brown-medium text-lg leading-relaxed mb-8">{page.shoppingIntro}</p>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 text-left max-w-2xl mx-auto">
