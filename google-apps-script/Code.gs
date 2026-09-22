@@ -44,6 +44,7 @@ function doPost(e) {
       code,
       data.firstName || '',
       data.lastName || '',
+      data.email || '',
       ...childValues,
       attendance.mehndi === true,
       attendance.sangeet === true,
