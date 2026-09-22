@@ -81,6 +81,17 @@ const rsvpEndpoint = import.meta.env.PUBLIC_RSVP_ENDPOINT ?? '';
               {isFrench ? 'Adresse courriel pour la confirmation' : 'Email address for confirmation'} <span class="text-red-wine" aria-hidden="true">*</span>
               <input name="email" type="email" class="rsvp-field" autocomplete="email" required />
             </label>
+            <div class="sm:col-span-2">
+              <div class="flex items-center justify-between gap-3 mb-3">
+                <p class="font-body text-sm text-brown-medium">
+                  {isFrench ? 'Enfants de moins de 18 ans' : 'Children under 18'}
+                </p>
+                <button id="add-child-button" type="button" class="border border-red-wine text-red-wine px-4 py-2 font-caps text-[10px] tracking-[0.14em] uppercase hover:bg-red-wine hover:text-off-white transition-colors">
+                  {isFrench ? 'Ajouter un enfant' : 'Add a child'}
+                </button>
+              </div>
+              <div id="children-container" class="space-y-3"></div>
+            </div>
           </div>
 
           <fieldset class="border-0 p-0 mb-8">
@@ -112,7 +123,7 @@ const rsvpEndpoint = import.meta.env.PUBLIC_RSVP_ENDPOINT ?? '';
           <p class="font-body text-brown-medium leading-relaxed mb-8">
             {isFrench ? 'Nous avons hâte de célébrer avec vous. Si votre réponse change, veuillez écrire à netra.julien.wedding@gmail.com.' : 'We cannot wait to celebrate with you. If your RSVP changes, please email netra.julien.wedding@gmail.com.'}
           </p>
-          <a class="inline-block border border-red-wine text-red-wine px-6 py-3 font-caps text-xs tracking-[0.12em] uppercase hover:bg-red-wine hover:text-off-white transition-colors" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Netra%20%26%20Julien%27s%20Wedding%20Celebration&dates=20270604%2F20270607&details=Wedding%20celebrations%20for%20Netra%20and%20Julien%20in%20Calgary." target="_blank" rel="noreferrer">
+          <a class="inline-block border border-red-wine text-red-wine px-6 py-3 font-caps text-xs tracking-[0.12em] uppercase hover:bg-red-wine hover:text-off-white transition-colors" href={isFrench ? 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=C%C3%A9l%C3%A9brations%20du%20mariage%20de%20Netra%20et%20Julien&dates=20270604%2F20270607&details=C%C3%A9l%C3%A9brations%20du%20mariage%20de%20Netra%20et%20Julien%20%C3%A0%20Calgary.' : 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=Netra%20%26%20Julien%27s%20Wedding%20Celebration&dates=20270604%2F20270607&details=Wedding%20celebrations%20for%20Netra%20and%20Julien%20in%20Calgary.'} target="_blank" rel="noreferrer">
             {isFrench ? 'Ajouter les dates au calendrier' : 'Add the dates to your calendar'}
           </a>
         </div>
@@ -135,6 +146,7 @@ const rsvpEndpoint = import.meta.env.PUBLIC_RSVP_ENDPOINT ?? '';
     '7913': ['sangeet', 'wedding', 'reception'],
     '0492': ['wedding', 'reception'],
     '5011': ['reception'],
+    '6325': ['mehndi', 'sangeet', 'haldi', 'wedding', 'reception'],
   };
   const codeForm = document.querySelector('#code-form');
   const codeInput = document.querySelector('#guest-code');
@@ -144,6 +156,8 @@ const rsvpEndpoint = import.meta.env.PUBLIC_RSVP_ENDPOINT ?? '';
   const submitError = document.querySelector('#submit-error');
   const thankYou = document.querySelector('#thank-you');
   const submitButton = document.querySelector('#submit-rsvp');
+  const addChildButton = document.querySelector('#add-child-button');
+  const childrenContainer = document.querySelector('#children-container');
   let activeCode = '';
   let isSubmitting = false;
 
@@ -151,6 +165,34 @@ const rsvpEndpoint = import.meta.env.PUBLIC_RSVP_ENDPOINT ?? '';
     element.textContent = message;
     element.classList.remove('hidden');
   }
+
+  function addChildField(value = '') {
+    const row = document.createElement('div');
+    row.className = 'flex items-center gap-3';
+
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.name = 'childName';
+    input.value = value;
+    input.placeholder = isFrench ? 'Prénom de l’enfant' : 'Child first name';
+    input.className = 'rsvp-field flex-1';
+    input.autocomplete = 'given-name';
+
+    const removeButton = document.createElement('button');
+    removeButton.type = 'button';
+    removeButton.className = 'flex h-9 w-9 items-center justify-center rounded-full border border-gold-light text-lg text-brown-medium hover:border-red-wine hover:text-red-wine transition-colors';
+    removeButton.setAttribute('aria-label', isFrench ? 'Retirer cet enfant' : 'Remove this child');
+    removeButton.title = isFrench ? 'Retirer cet enfant' : 'Remove this child';
+    removeButton.textContent = '×';
+    removeButton.addEventListener('click', () => row.remove());
+
+    row.appendChild(input);
+    row.appendChild(removeButton);
+    childrenContainer.appendChild(row);
+    input.focus();
+  }
+
+  addChildButton?.addEventListener('click', () => addChildField());
 
   codeForm?.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -167,6 +209,7 @@ const rsvpEndpoint = import.meta.env.PUBLIC_RSVP_ENDPOINT ?? '';
     activeCode = code;
     codeError.classList.add('hidden');
     const eventDates = {
+      mehndi: isFrench ? 'Mehndi (4 juin 2027) — événement non officiel' : 'Mehndi (June 4th, 2027) — unofficial event',
       sangeet: isFrench ? 'Sangeet (4 juin 2027)' : 'Sangeet (June 4th, 2027)',
       haldi: isFrench ? 'Haldi (5 juin 2027)' : 'Haldi (June 5th, 2027)',
       wedding: isFrench ? 'Cérémonie (6 juin 2027)' : 'Ceremony (June 6th, 2027)',
@@ -196,12 +239,16 @@ const rsvpEndpoint = import.meta.env.PUBLIC_RSVP_ENDPOINT ?? '';
     submitError.classList.add('hidden');
     const data = new FormData(rsvpForm);
     const events = invitationTiers[activeCode];
+    const childNames = Array.from(document.querySelectorAll('input[name="childName"]'))
+      .map((input) => String(input.value || '').trim())
+      .filter(Boolean);
     const payload = {
       code: activeCode,
       language: isFrench ? 'fr' : 'en',
       firstName: data.get('firstName'),
       lastName: data.get('lastName'),
       email: data.get('email'),
+      children: childNames,
       dietaryRestrictions: data.get('dietaryRestrictions') || '',
       comments: data.get('comments') || '',
       attendance: Object.fromEntries(events.map((eventId) => [eventId, data.get(`attendance-${eventId}`) === 'yes'])),
