@@ -43,13 +43,14 @@ const eventImages = {
       class:list={['scroll-mt-20 py-20 sm:py-28 px-4', i % 2 === 0 ? 'bg-beige' : 'bg-cream']}
     >
       <div class="max-w-5xl mx-auto text-center">
-        <p class="font-body text-red-wine text-xs tracking-[0.3em] uppercase mb-3">{event.title}</p>
-        <h2 class="font-display text-4xl sm:text-5xl text-brown-dark mb-10">{event.vibe}</h2>
+        <p class="font-body text-red-wine text-xs tracking-[0.3em] uppercase mb-3">{event.eyebrow}</p>
+        <h2 class="font-display text-4xl sm:text-5xl text-brown-dark mb-3">{event.title}</h2>
+        <p class="font-editorial italic text-brown-medium text-xl sm:text-2xl mb-10">{event.vibe}</p>
         <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,1.05fr)_minmax(280px,0.95fr)] gap-10 lg:gap-16 items-center text-left">
           <div class="max-w-xl mx-auto w-full">
             <div class="overflow-hidden shadow-sm">
               <Image
-                src={eventImages[event.image]}
+                src={eventImages[event.id]}
                 alt={`${event.title} outfit inspiration`}
                 class="w-full h-auto block"
                 loading="lazy"
@@ -63,7 +64,7 @@ const eventImages = {
                   <span class="w-8 h-8 sm:w-10 sm:h-10 rounded-full border border-white/70 shadow-sm" style={`background-color: ${color}`} aria-label={color}></span>
                 ))}
               </div>
-              <p class="font-body text-sm text-brown-medium leading-relaxed">{event.paletteNote}</p>
+              <p class="font-body text-sm text-brown-medium leading-relaxed">{event.desc}</p>
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-6 mb-8">
               <div>
@@ -105,7 +106,6 @@ const eventImages = {
         <div class="ornament-line"></div>
       </div>
       <div class="bg-cream px-6 py-8 mb-10">
-        <p class="font-display text-xl text-brown-dark mb-3">{page.curatedShopLabel}</p>
         <p class="font-body text-red-wine text-sm tracking-[0.12em] uppercase mb-6">
           {page.discountText.split('NETRA15')[0]}<strong class="font-bold underline">NETRA15</strong>{page.discountText.split('NETRA15')[1]}
         </p>
